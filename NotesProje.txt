@@ -1,0 +1,12 @@
+1) Catalog microservisi projesi oluşturuldu mongo db veritabanıyla çalışıldığı 
+için gerekli mongo db kütüphanesi indirildi entities klasörü oluşturul ve 
+category, product, productdetail ve product image entitiyleri yazıldı ve 
+appseting dosyasında databasesettings keyi oluşturulup mongo db ile ilgili 
+collection, conneciton ve database bilgileri yazıldı sonrasında settings 
+klasörü oluşturulup Idatabese setting interface ve databaseSetting sınıfı 
+oluştudul appsettings dosyasında yazılın key lerin birebir adlarıyla propertyler 
+oluştulup DatabaseSetting sınıfı IdatabaseSetting sınıfını miras alındı sonrasında 
+Dtos klasörü oluşturulup her bir entity için ayrı ayrı dtolar oluşturulup 
+Automapper kütüphanesi eklenerek mappings klasöründe ayarlarmalar yapıldı  
+her bir sınıf için ayrı ayrı servisler yazıldı propgram.cs tarafında servisler dahil edildi 
+sonrasında her bir entity için api controller oluştuurlup gerekli apiler yazıldı test ok 
