@@ -19,7 +19,7 @@ namespace MultiShop.Order.WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetOrderingList()
         {
-            return Ok(await _mediatR.Send(new GetAdressQuery()));
+            return Ok(await _mediatR.Send(new GetOrderingQuery()));
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetOrderingById(int id)
