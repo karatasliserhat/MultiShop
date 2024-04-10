@@ -2,4 +2,5 @@ catalog microservice => https://localhost:7070
 Discount microservice=> https://localhost:7071
 order Microservice => https://localhost:7072
 cargo MicroService => https://localhost:7073
+Basket MicroService => https://localhost:7074
 identity Microservice => https://localhost:5001

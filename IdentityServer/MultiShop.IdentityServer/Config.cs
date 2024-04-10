@@ -16,6 +16,7 @@ namespace MultiShop.IdentityServer
            new ApiResource("ResourceDiscount"){Scopes={"DiscountFullPermisson"}},
            new ApiResource("ResourceOrder"){Scopes={"OrderFullPermisson"}},
            new ApiResource("ResourceCargo"){Scopes={"CargoFullPermisson"} },
+           new ApiResource("ResourceBasket"){Scopes={"BasketFullPermisson"} },
            new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
        };
 
@@ -32,6 +33,7 @@ namespace MultiShop.IdentityServer
             new ApiScope("DiscountFullPermisson","Full Authority for Discount Operations"),
             new ApiScope("OrderFullPermisson","Full Authority for Order Operations"),
             new ApiScope("CargoFullPermisson","Full Cargo for Order Operations"),
+            new ApiScope("BasketFullPermisson","Full Basket for Order Operations"),
             new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
         };
 
@@ -50,7 +52,7 @@ namespace MultiShop.IdentityServer
             {
                 ClientId="MultiShopManagerId",
                 ClientName="Multi Shop Manager User",
-                AllowedGrantTypes=GrantTypes.ClientCredentials,
+                AllowedGrantTypes=GrantTypes.ResourceOwnerPassword,
                 ClientSecrets={new Secret("multishopsecret".Sha256())},
                 AllowedScopes={ "CatalogFullPermisson", "CatalogReadPermisson" }
             },
@@ -58,9 +60,9 @@ namespace MultiShop.IdentityServer
             {
                 ClientId="MultiShopAdminId",
                 ClientName="Multi Shop Admin User",
-                AllowedGrantTypes=GrantTypes.ClientCredentials,
+                AllowedGrantTypes=GrantTypes.ResourceOwnerPassword,
                 ClientSecrets={new Secret("multishopsecret".Sha256())},
-                AllowedScopes={ "CatalogFullPermisson", "CatalogReadPermisson", "DiscountFullPermisson", "OrderFullPermisson","CargoFullPermisson",
+                AllowedScopes={ "CatalogFullPermisson", "CatalogReadPermisson", "DiscountFullPermisson", "OrderFullPermisson","CargoFullPermisson","BasketFullPermisson",
                 IdentityServerConstants.LocalApi.ScopeName,
                 IdentityServerConstants.StandardScopes.Email,
                 IdentityServerConstants.StandardScopes.OpenId,
