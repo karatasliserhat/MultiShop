@@ -1,5 +1,4 @@
 ﻿using MultiShop.Basket.Dtos;
-using MultiShop.Basket.Settings;
 using StackExchange.Redis;
 using System.Text.Json;
 
@@ -9,11 +8,9 @@ namespace MultiShop.Basket.Services
     {
 
         private readonly IDatabase _redisDatabase;
-        private readonly RedisService _redisService;
-        public BasketService(IDatabase redisDatabase, RedisService redisService)
+        public BasketService(IDatabase redisDatabase)
         {
             _redisDatabase = redisDatabase;
-            _redisService = redisService;
         }
 
         public async Task DeleteBasketAsync(string userId)
