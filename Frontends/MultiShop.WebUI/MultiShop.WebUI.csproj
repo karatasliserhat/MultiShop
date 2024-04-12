@@ -2,8 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>e2543bb0-efc6-4576-b0b0-de250350b8c2</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,7 +21,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shareds\MultiShop.Shared\MultiShop.Shared.csproj" />
+    <ProjectReference Include="..\MultiShop.DtoLayer\MultiShop.DtoLayer.csproj" />
   </ItemGroup>
 
 </Project>
