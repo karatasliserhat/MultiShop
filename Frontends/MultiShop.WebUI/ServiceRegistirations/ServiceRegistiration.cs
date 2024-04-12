@@ -32,6 +32,15 @@ namespace MultiShop.WebUI.ServiceRegistirations
             {
                 opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
             });
+
+            Services.AddHttpClient<IProductReadApiService, ProductReadApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
+            });
+            Services.AddHttpClient<IProductCommandApiService, ProductCommandApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
+            });
         }
     }
 }

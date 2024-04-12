@@ -8,6 +8,7 @@ namespace MultiShop.WebUI.Mappings
         public MapProfile()
         {
             CreateMap<ResultCategoryDto, UpdateCategoryDto>();
+            CreateMap<ResultProductDto, UpdateProductDto>();
         }
     }
 }

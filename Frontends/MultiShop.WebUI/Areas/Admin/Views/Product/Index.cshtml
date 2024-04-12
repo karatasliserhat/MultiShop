@@ -1,26 +1,28 @@
-﻿@model List<ResultCategoryDto>
-@{
-    ViewData["Title"] = "Kategoriler";
-    Layout = "~/Areas/Admin/Views/AdminLayout/_AdminLayout.cshtml";
+﻿@model List<ResultProductsWithCategoryDto>
 
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/_AdminLayout.cshtml";
     int count = 0;
 }
 
 <div class="col-md-12">
     <div class="chart-box">
-        <h4>Kategori Tablosu</h4>
-        <p>Kategori ile ilgili işlemlerinizi aşağıdaki tablo üzerinden gerçekleştirebilsiniz.</p>
+        <h4>Ürün Tablosu</h4>
+        <p>Ürün ile ilgili işlemlerinizi aşağıdaki tablo üzerinden gerçekleştirebilsiniz.</p>
         <div class="bs-example" data-example-id="bordered-table">
 
             <div class="text-start">
-                <a asp-action="CreateCategory" asp-controller="Category" class="btn btn-primary">Yeni Kategori</a>
+                <a asp-action="CreateProduct" asp-controller="Product" class="btn btn-primary">Yeni Ürün</a>
             </div>
             <br />
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Kategori Adı</th>
+                        <th>Ürün Adı</th>
+                        <th>Ürün Fiyatı</th>
+                        <th>Ürün Kategori</th>
                         <th>Sil</th>
                         <th>Güncelle</th>
                     </tr>
@@ -35,8 +37,10 @@
                             <tr>
                                 <th scope="row">@count</th>
                                 <td>@item.Name</td>
-                                <td><a asp-action="Delete" asp-controller="Category" asp-route-id="@item.DataProtect" class="btn btn-danger">Sil</a></td>
-                                <td><a asp-action="Update" asp-controller="Category" asp-route-id="@item.DataProtect" class="btn btn-success">Güncelle</a></td>
+                                <td>@item.Price.ToString("0.00₺")</td>
+                                <td>@item.CategoryName</td>
+                                <td><a asp-action="Delete" asp-controller="Product" asp-route-id="@item.DataProtect" class="btn btn-danger">Sil</a></td>
+                                <td><a asp-action="Update" asp-controller="Product" asp-route-id="@item.DataProtect" class="btn btn-success">Güncelle</a></td>
                             </tr>
                         }
                     }
@@ -45,7 +49,7 @@
 
 
                         <tr>
-                            <td class="alert alert-warning" colspan="4">Kayıt Yok</td>
+                            <td class="alert alert-warning" colspan="5">Kayıt Yok</td>
                         </tr>
 
                     }
@@ -57,3 +61,5 @@
         </div>
     </div>
 </div>
+
+

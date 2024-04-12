@@ -1,0 +1,36 @@
+﻿@model CreateProductDto
+@{
+    ViewData["Title"] = "CreateProduct";
+    Layout = "~/Areas/Admin/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="chart-box">
+
+        <div class="bs-example" data-example-id="bordered-table">
+
+            <form asp-controller="Product" asp-action="CreateProduct" method="post">
+                <label class="form-label">Ürün Adı</label>
+                <input type="text" asp-for="@Model.Name" class="form-control" placeholder="Ürün Adını Giriniz" />
+                <br />
+                <label class="form-label">Ürün Fiyatı</label>
+                <input type="text" asp-for="@Model.Price" class="form-control" placeholder="Ürün Fiyatını Giriniz" />
+                <br />
+                <label class="form-label">Kategori</label>
+                <select class="form-control" style="padding:0px 0px 0px 12px" asp-for="@Model.CategoryId" asp-items="@ViewBag.Category">
+                    <option value="#">Kategori Seçiniz</option>
+                </select>
+                <br />
+                <label class="form-label">Ürün Fotoğrafı</label>
+                <input type="text" asp-for="@Model.ImageUrl" class="form-control" placeholder="Ürün Fotoğrafını Giriniz" />
+                <br />
+                <label class="form-label">Ürün Açıklaması</label>
+                <textarea class="form-control" cols="5" rows="10" placeholder="Ürün Açıklaması Giriniz" asp-for="@Model.Descripiton"></textarea>
+                <br />
+                <input type="submit" value="Ürünü Ekle" class="btn btn-info" />
+            </form>
+
+        </div>
+    </div>
+</div>
+
