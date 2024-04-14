@@ -1,0 +1,33 @@
+﻿@model CreateFeatureSliderDto
+@{
+    ViewData["Title"] = "CreateProduct";
+    Layout = "~/Areas/Admin/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="chart-box">
+
+        <div class="bs-example" data-example-id="bordered-table">
+
+            <form asp-controller="FeatureSlider" asp-action="CreateFeatureSlider" method="post">
+                <label class="form-label">Görsel Başlığı</label>
+                <input type="text" asp-for="@Model.Title" class="form-control" placeholder="Görsel Adını Giriniz" />
+                <br />
+                <label class="form-label">Görsel Açıklaması</label>
+                <textarea class="form-control" cols="5" rows="10" placeholder="Görsel Açıklaması Giriniz" asp-for="@Model.Descripiton"></textarea>
+                <br />
+                <label class="form-label">Görsel Linki</label>
+                <input type="text" asp-for="@Model.ImageUrl" class="form-control" placeholder="Görsel Linkini Giriniz" />
+                <br />
+                <label class="form-label">Görsel Durumu</label>
+                <select class="form-control" style="padding:0px 0px 0px 12px" asp-for="@Model.Status" asp-items="@ViewBag.SelectTrueFalse">
+                    <option value="#">Görsel Durumunu Seçiniz</option>
+                </select>
+                <br />
+                <input type="submit" value="Görsel Ekle" class="btn btn-info" />
+            </form>
+
+        </div>
+    </div>
+</div>
+

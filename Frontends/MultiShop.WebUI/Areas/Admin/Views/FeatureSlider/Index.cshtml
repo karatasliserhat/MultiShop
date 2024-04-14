@@ -1,0 +1,64 @@
+﻿@model List<ResultFeatureSliderDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="col-md-12">
+    <div class="chart-box">
+        <h4>Öne Çıkan Slider Görseller Tablosu</h4>
+        <p>Öne Çıkan Slider Görseller ile ilgili işlemlerinizi aşağıdaki tablo üzerinden gerçekleştirebilsiniz.</p>
+        <div class="bs-example" data-example-id="bordered-table">
+
+            <div class="text-start">
+                <a asp-action="CreateFeatureSlider" asp-controller="FeatureSlider" class="btn btn-primary">Yeni Öne Çıkan Görsel</a>
+            </div>
+            <br />
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Başlık</th>
+                        <th>Açıklama</th>
+                        <th>Görsel</th>
+                        <th>Durum</th>
+                        <th>Sil</th>
+                        <th>Güncelle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model is not null)
+                    {
+
+                        foreach (var item in Model)
+                        {
+                            count++;
+                            <tr>
+                                <th scope="row">@count</th>
+                                <td>@item.Title</td>
+                                <td>@item.Descripiton</td>
+                                <td>@item.ImageUrl</td>
+                                <td>@(item.Status?"Aktif":"Pasif")</td>
+                                <td><a asp-action="Delete" asp-controller="FeatureSlider" asp-route-id="@item.DataProtect" class="btn btn-danger">Sil</a></td>
+                                <td><a asp-action="Update" asp-controller="FeatureSlider" asp-route-id="@item.DataProtect" class="btn btn-success">Güncelle</a></td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+
+
+                        <tr>
+                            <td class="alert alert-warning" colspan="5">Kayıt Yok</td>
+                        </tr>
+
+                    }
+                </tbody>
+
+
+
+            </table>
+        </div>
+    </div>
+</div>
