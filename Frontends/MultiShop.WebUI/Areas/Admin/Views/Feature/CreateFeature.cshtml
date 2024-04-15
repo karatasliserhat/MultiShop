@@ -1,0 +1,30 @@
+﻿@model CreateFeatureDto
+@{
+    ViewData["Title"] = "CreateProduct";
+    Layout = "~/Areas/Admin/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="chart-box">
+
+        <div class="bs-example" data-example-id="bordered-table">
+
+            <form asp-controller="Feature" asp-action="CreateFeature" method="post">
+                <label class="form-label">Öne Çıkan Alan Başlığı</label>
+                <input type="text" asp-for="@Model.Title" class="form-control" placeholder="Öne Çıkan Alan Başlığını Giriniz" />
+                <br />
+                <label class="form-label">Öne Çıkan Alan İcon Url</label>
+                <input type="text" asp-for="@Model.IconUrl" class="form-control" placeholder="Öne Çıkan Alan İconu Giriniz" />
+                <br />
+                <label class="form-label">Öne Çıkan Alan Durumu</label>
+                <select class="form-control" style="padding:0px 0px 0px 12px" asp-for="@Model.Status" asp-items="@ViewBag.SelectTrueFalse">
+                    <option value="#">Öne Çıkan Alan Durumunu Seçiniz</option>
+                </select>
+                <br />
+                <input type="submit" value="Öne Çıkan Alan Ekle" class="btn btn-info" />
+            </form>
+
+        </div>
+    </div>
+</div>
+

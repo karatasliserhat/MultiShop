@@ -1,4 +1,4 @@
-﻿@model List<ResultSpecialOfferDto>
+﻿@model List<ResultFeatureDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/AdminLayout/_AdminLayout.cshtml";
@@ -7,12 +7,12 @@
 
 <div class="col-md-12">
     <div class="chart-box">
-        <h4>Özel Teklifler Tablosu</h4>
-        <p>Özel Teklifler ile ilgili işlemlerinizi aşağıdaki tablo üzerinden gerçekleştirebilsiniz.</p>
+        <h4>Öne Çıkan Alanlar Tablosu</h4>
+        <p>Öne Çıkan Alan ile ilgili işlemlerinizi aşağıdaki tablo üzerinden gerçekleştirebilsiniz.</p>
         <div class="bs-example" data-example-id="bordered-table">
 
             <div class="text-start">
-                <a asp-action="CreateSpecialOffer" asp-controller="SpecialOffer" class="btn btn-primary">Yeni Özel Fırsat</a>
+                <a asp-action="CreateFeature" asp-controller="Feature" class="btn btn-primary">Yeni Öne Çıkan Alan</a>
             </div>
             <br />
             <table class="table table-bordered">
@@ -20,8 +20,7 @@
                     <tr>
                         <th>#</th>
                         <th>Başlık</th>
-                        <th>Alt Başlık</th>
-                        <th>Görsel</th>
+                        <th>İcon Url</th>
                         <th>Durum</th>
                         <th>Sil</th>
                         <th>Güncelle</th>
@@ -37,11 +36,10 @@
                             <tr>
                                 <th scope="row">@count</th>
                                 <td>@item.Title</td>
-                                <td>@item.SubTitle</td>
-                                <td>@item.ImageUrl</td>
+                                <td>@item.IconUrl</td>
                                 <td>@(item.Status?"Aktif":"Pasif")</td>
-                                <td><a asp-action="Delete" asp-controller="SpecialOffer" asp-route-id="@item.DataProtect" class="btn btn-danger">Sil</a></td>
-                                <td><a asp-action="Update" asp-controller="SpecialOffer" asp-route-id="@item.DataProtect" class="btn btn-success">Güncelle</a></td>
+                                <td><a asp-action="Delete" asp-controller="Feature" asp-route-id="@item.DataProtect" class="btn btn-danger">Sil</a></td>
+                                <td><a asp-action="Update" asp-controller="Feature" asp-route-id="@item.DataProtect" class="btn btn-success">Güncelle</a></td>
                             </tr>
                         }
                     }
@@ -50,7 +48,7 @@
 
 
                         <tr>
-                            <td class="alert alert-warning" colspan="7">Kayıt Yok</td>
+                            <td class="alert alert-warning" colspan="6">Kayıt Yok</td>
                         </tr>
 
                     }
