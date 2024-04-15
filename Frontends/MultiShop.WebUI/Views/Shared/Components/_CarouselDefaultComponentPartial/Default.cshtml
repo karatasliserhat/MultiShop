@@ -14,7 +14,7 @@
                 <div class="carousel-inner">
                     @if (Model.Count > 0)
                     {
-                        @for (int i = 0; i < Model.Count; i++)
+                        for (int i = 0; i < Model.Count; i++)
                         {
                             var active = i == 0 ? "active" : "";
                             <div class="carousel-item position-relative @active" style="height: 430px;">
@@ -23,11 +23,24 @@
                                     <div class="p-3" style="max-width: 700px;">
                                         <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">@Model[i].Title</h1>
                                         <p class="mx-md-5 px-5 animate__animated animate__bounceIn">@Model[i].Descripiton</p>
-                                        <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
+                                        <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Alışverişe Başla</a>
                                     </div>
                                 </div>
                             </div>
                         }
+                    }
+                    else
+                    {
+                        <div class="carousel-item position-relative active" style="height: 430px;">
+                            <img class="position-absolute w-100 h-100" src="~/MainDownload-OvioAdmin-html5-template/html/dist/img/media/thumb/thumb1.jpg" style="object-fit: cover;">
+                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                <div class="p-3" style="max-width: 700px;">
+                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Başlık Ekleyiniz </h1>
+                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Açıklama Ekleyiniz </p>
+                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Alışverişe Başla</a>
+                                </div>
+                            </div>
+                        </div>
                     }
                 </div>
             </div>

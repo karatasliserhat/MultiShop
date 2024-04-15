@@ -5,6 +5,7 @@ using MultiShop.Catalog.Services.FeatureSliderServices;
 using MultiShop.Catalog.Services.ProductDetailServices;
 using MultiShop.Catalog.Services.ProductImageServices;
 using MultiShop.Catalog.Services.ProductServices;
+using MultiShop.Catalog.Services.SpecialOfferServices;
 using MultiShop.Catalog.Settings;
 using System.Reflection;
 
@@ -13,11 +14,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
 {
-
     opt.Authority = builder.Configuration["IdentityServerUrl"];
     opt.Audience = "ResourceCatalog";
     opt.RequireHttpsMetadata = false;
-
 });
 
 builder.Services.AddScoped<ICategoryService, CategoryService>();
@@ -25,6 +24,7 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductDetailService, ProductDetailService>();
 builder.Services.AddScoped<IProductImageService, ProductImageService>();
 builder.Services.AddScoped<IFeatureSliderService, FeatureSliderService>();
+builder.Services.AddScoped<ISpecialOfferService, SpecialOfferService>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 

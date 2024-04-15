@@ -1,0 +1,33 @@
+﻿@model CreateSpecialOfferDto
+@{
+    ViewData["Title"] = "CreateProduct";
+    Layout = "~/Areas/Admin/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="chart-box">
+
+        <div class="bs-example" data-example-id="bordered-table">
+
+            <form asp-controller="SpecialOffer" asp-action="CreateSpecialOffer" method="post">
+                <label class="form-label">Özel Teklif Başlık</label>
+                <input type="text" asp-for="@Model.Title" class="form-control" placeholder="Özel Teklif Başlığı Giriniz" />
+                <br />
+                <label class="form-label">Özel Teklif Alt Başlık</label>
+                <input type="text" asp-for="@Model.SubTitle" class="form-control" placeholder="Özel Teklif Alt Başlığı Giriniz" />
+                <br />
+                <label class="form-label">Görsel Linki</label>
+                <input type="text" asp-for="@Model.ImageUrl" class="form-control" placeholder="Özel Teklif Görsel Linkini Giriniz" />
+                <br />
+                <label class="form-label">Özel Teklif Durumu</label>
+                <select class="form-control" style="padding:0px 0px 0px 12px" asp-for="@Model.Status" asp-items="@ViewBag.SelectTrueFalse">
+                    <option value="#">Özel Teklif Durumunu Seçiniz</option>
+                </select>
+                <br />
+                <input type="submit" value="Özel Teklif Ekle" class="btn btn-info" />
+            </form>
+
+        </div>
+    </div>
+</div>
+
