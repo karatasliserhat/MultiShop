@@ -21,6 +21,7 @@
                     <tr>
                         <th>#</th>
                         <th>Kategori Adı</th>
+                        <th>Kategori Görseli</th>
                         <th>Sil</th>
                         <th>Güncelle</th>
                     </tr>
@@ -35,6 +36,7 @@
                             <tr>
                                 <th scope="row">@count</th>
                                 <td>@item.Name</td>
+                                <td>@item.ImageUrl</td>
                                 <td><a asp-action="Delete" asp-controller="Category" asp-route-id="@item.DataProtect" class="btn btn-danger">Sil</a></td>
                                 <td><a asp-action="Update" asp-controller="Category" asp-route-id="@item.DataProtect" class="btn btn-success">Güncelle</a></td>
                             </tr>
