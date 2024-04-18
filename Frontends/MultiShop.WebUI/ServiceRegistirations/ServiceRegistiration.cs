@@ -72,6 +72,15 @@ namespace MultiShop.WebUI.ServiceRegistirations
             Services.AddHttpClient<IOfferDiscountCommandApiService, OfferDiscountCommandApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
+            }); 
+            
+            Services.AddHttpClient<IBrandReadApiService, BrandReadService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
+            });
+            Services.AddHttpClient<IBrandCommandApiService, BrandCommandService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
             });
 
         }

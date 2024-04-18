@@ -49,7 +49,12 @@ namespace MultiShop.Catalog.Mapping
             CreateMap<OfferDiscount, ResultOfferDiscountDto>().ReverseMap();
             CreateMap<OfferDiscount, GetByIdOfferDiscountDto>().ReverseMap();
             CreateMap<OfferDiscount, CreateOfferDiscountDto>().ReverseMap();
-            CreateMap<OfferDiscount, UpdateOfferDiscountDto>().ReverseMap();
+            CreateMap<OfferDiscount, UpdateOfferDiscountDto>().ReverseMap(); 
+            
+            CreateMap<Brand, ResultBrandDto>().ReverseMap();
+            CreateMap<Brand, GetByIdBrandDto>().ReverseMap();
+            CreateMap<Brand, CreateBrandDto>().ReverseMap();
+            CreateMap<Brand, UpdateBrandDto>().ReverseMap();
         }
     }
 }
