@@ -5,5 +5,6 @@ namespace MultiShop.Shared.Services.Abstract
     public interface IProductReadApiService:IApiReadService<ResultProductDto>
     {
         Task<List<ResultProductsWithCategoryDto>> GetProductsWithCategoryAsync();
+        Task<List<ResultProductsWithCategoryDto>> ProductListWithCategoryByCategoryId(string categoryId);
     }
 }

@@ -17,5 +17,10 @@ namespace MultiShop.Shared.Services.Service
             return await _client.GetFromJsonAsync<List<ResultProductsWithCategoryDto>>("Products/ProductListWithCategory");
 
         }
+
+        public async Task<List<ResultProductsWithCategoryDto>> ProductListWithCategoryByCategoryId(string categoryId)
+        {
+            return await _client.GetFromJsonAsync<List<ResultProductsWithCategoryDto>>($"Products/ProductListWithCategoryByCategoryId/{categoryId}");
+        }
     }
 }
