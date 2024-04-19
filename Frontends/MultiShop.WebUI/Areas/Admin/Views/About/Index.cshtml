@@ -1,4 +1,4 @@
-﻿@model List<ResultBrandDto>
+﻿@model List<ResultAboutDto>
 @{
     ViewData["Title"] = "Kategoriler";
     Layout = "~/Areas/Admin/Views/AdminLayout/_AdminLayout.cshtml";
@@ -8,20 +8,22 @@
 
 <div class="col-md-12">
     <div class="chart-box">
-        <h4>Marka Tablosu</h4>
-        <p>Marka ile ilgili işlemlerinizi aşağıdaki tablo üzerinden gerçekleştirebilsiniz.</p>
+        <h4>Hakkımızda Tablosu</h4>
+        <p>Hakkımzda ile ilgili işlemlerinizi aşağıdaki tablo üzerinden gerçekleştirebilsiniz <strong>Tema Bütünlüğü için sadece 1 adet Hakkımızda Girişi Yapınız...</strong></p>
         <div class="bs-example" data-example-id="bordered-table">
 
             <div class="text-start">
-                <a asp-action="CreateBrand" asp-controller="Brand" class="btn btn-primary">Yeni Marka</a>
+                <a asp-action="CreateAbout" asp-controller="About" class="btn btn-primary">Yeni Hakkımızda Girişi</a>
             </div>
             <br />
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Marka Adı</th>
-                        <th>Marka Görseli</th>
+                        <th>Açıklama</th>
+                        <th>Adres</th>
+                        <th>Email</th>
+                        <th>Telefon</th>
                         <th>Sil</th>
                         <th>Güncelle</th>
                     </tr>
@@ -35,10 +37,12 @@
                             count++;
                             <tr>
                                 <th scope="row">@count</th>
-                                <td>@item.BrandName</td>
-                                <td><img src="@item.ImageUrl" alt="Alternate Text" width="50" height="50" /></td>
-                                <td><a asp-action="Delete" asp-controller="Brand" asp-route-id="@item.DataProtect" class="btn btn-danger">Sil</a></td>
-                                <td><a asp-action="Update" asp-controller="Brand" asp-route-id="@item.DataProtect" class="btn btn-success">Güncelle</a></td>
+                                <td>@item.Description</td>
+                                <td>@item.Address</td>
+                                <td>@item.Email</td>
+                                <td>@item.Phone</td>
+                                <td><a asp-action="Delete" asp-controller="About" asp-route-id="@item.DataProtect" class="btn btn-danger">Sil</a></td>
+                                <td><a asp-action="Update" asp-controller="About" asp-route-id="@item.DataProtect" class="btn btn-success">Güncelle</a></td>
                             </tr>
                         }
                     }
@@ -47,7 +51,7 @@
 
 
                         <tr>
-                            <td class="alert alert-warning" colspan="5">Kayıt Yok</td>
+                            <td class="alert alert-warning" colspan="7">Kayıt Yok</td>
                         </tr>
 
                     }
