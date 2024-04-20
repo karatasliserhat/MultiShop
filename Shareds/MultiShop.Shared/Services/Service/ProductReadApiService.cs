@@ -22,5 +22,20 @@ namespace MultiShop.Shared.Services.Service
         {
             return await _client.GetFromJsonAsync<List<ResultProductsWithCategoryDto>>($"Products/ProductListWithCategoryByCategoryId/{categoryId}");
         }
+
+        public async Task<ResultProductWithCategoryWithImagesWithDetailDto> GetResultProductWithCategoryWithImagesWithDetailByProductIdAsync(string productId)
+        {
+            return await _client.GetFromJsonAsync<ResultProductWithCategoryWithImagesWithDetailDto>($"Products/GetProductWithCategoryWithImagesWithDetailByProductId/{productId}");
+        }
+
+        public async Task<GetProductWithProductDetailDto> GetResultProductWithDetailByProductIdAsync(string productId)
+        {
+            return await _client.GetFromJsonAsync<GetProductWithProductDetailDto>($"Products/GetProductWithDetailByProductId/{productId}");
+        }
+
+        public async Task<GetProductWithProductImagesDto> GetResultProductWithImagesByProductIdAsync(string productId)
+        {
+            return await _client.GetFromJsonAsync<GetProductWithProductImagesDto>($"Products/GetProductWithImagesByProductId/{productId}");
+        }
     }
 }

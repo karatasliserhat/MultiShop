@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MultiShop.WebUI.Controllers
 {
     public class ProductListController : Controller
     {
+        
+
         public IActionResult Index(string id)
         {
             ViewBag.dataId=id;
@@ -13,8 +16,9 @@ namespace MultiShop.WebUI.Controllers
             return View();
         }
 
-        public IActionResult ProductDetail()
+        public IActionResult ProductDetail(string id)
         {
+            ViewBag.dataId = id;
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v3 = "Ürün Listesi";
             ViewBag.v2 = "Ürün Detayları";

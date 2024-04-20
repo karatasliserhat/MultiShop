@@ -6,8 +6,8 @@
 
 <div class="container-fluid pb-5">
     <div class="row px-xl-5">
-        @await Component.InvokeAsync("_ImageSliderProductDetailComponentPartial")
-        @await Component.InvokeAsync("_FeatureProductDetailComponentPartial")
+        @await Component.InvokeAsync("_ImageSliderProductDetailComponentPartial", new { id = ViewBag.dataId })
+        @await Component.InvokeAsync("_FeatureProductDetailComponentPartial", new { id = ViewBag.dataId })
     </div>
     <div class="row px-xl-5">
         <div class="col">
@@ -22,7 +22,7 @@
 
                     @await Component.InvokeAsync("_InformationProductDetailComponenetPartial")
 
-                    @await Component.InvokeAsync("_ReviewProductDetailComponenetPartial")        
+                    @await Component.InvokeAsync("_ReviewProductDetailComponenetPartial")
                 </div>
             </div>
         </div>

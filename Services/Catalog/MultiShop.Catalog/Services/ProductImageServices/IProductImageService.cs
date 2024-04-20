@@ -1,4 +1,5 @@
 ﻿using MultiShop.Catalog.Dtos;
+using MultiShop.Catalog.Dtos.ProductImageDtos;
 
 namespace MultiShop.Catalog.Services.ProductImageServices
 {
@@ -9,5 +10,6 @@ namespace MultiShop.Catalog.Services.ProductImageServices
         Task CreateProductImageAsync(CreateProductImageDto createProductImageDto);
         Task DeleteProductImageAsync(string id);
         Task UpdateProductImageAsync(UpdateProductImageDto updateProductImageDto);
+        Task<List<GetImagesWithProductDto>> GetImagesWithProductByProductIdAsync(string productId);
     }
 }

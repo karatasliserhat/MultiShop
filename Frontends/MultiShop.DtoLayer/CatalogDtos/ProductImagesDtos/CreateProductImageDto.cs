@@ -1,4 +1,4 @@
-﻿namespace MultiShop.Catalog.Dtos
+﻿namespace MultiShop.DtoLayer.CatalogDtos
 {
     public class CreateProductImageDto
     {

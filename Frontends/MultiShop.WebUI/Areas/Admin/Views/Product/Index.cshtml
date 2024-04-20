@@ -25,6 +25,7 @@
                         <th>Ürün Kategori</th>
                         <th>Sil</th>
                         <th>Güncelle</th>
+                        <th>Fotoğraflar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,6 +42,7 @@
                                 <td>@item.CategoryName</td>
                                 <td><a asp-action="Delete" asp-controller="Product" asp-route-id="@item.DataProtect" class="btn btn-danger">Sil</a></td>
                                 <td><a asp-action="Update" asp-controller="Product" asp-route-id="@item.DataProtect" class="btn btn-success">Güncelle</a></td>
+                                <td><a asp-action="ProductImageDetail" asp-controller="ProductImage" asp-route-id="@item.DataProtect" class="btn btn-warning">Ürüne Ait Fotoğraflar</a></td>
                             </tr>
                         }
                     }
@@ -49,7 +51,7 @@
 
 
                         <tr>
-                            <td class="alert alert-warning" colspan="5">Kayıt Yok</td>
+                            <td class="alert alert-warning" colspan="6">Kayıt Yok</td>
                         </tr>
 
                     }

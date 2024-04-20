@@ -27,6 +27,11 @@ namespace MultiShop.Catalog.Controllers
         {
             return Ok(await _ProductImageService.GetByIdProductImageAsync(id));
         }
+        [HttpGet("[Action]/{productId}")]
+        public async Task<IActionResult> GetImagesWithProductByProductId(string productId)
+        {
+            return Ok(await _ProductImageService.GetImagesWithProductByProductIdAsync(productId));
+        }
         [HttpPost]
         public async Task<IActionResult> CreateProductImage(CreateProductImageDto createProductImageDto)
         {

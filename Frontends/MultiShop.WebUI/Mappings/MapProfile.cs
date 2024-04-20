@@ -15,6 +15,7 @@ namespace MultiShop.WebUI.Mappings
             CreateMap<ResultOfferDiscountDto, UpdateOfferDiscountDto>();
             CreateMap<ResultBrandDto, UpdateBrandDto>();
             CreateMap<ResultAboutDto, UpdateAboutDto>();
+            CreateMap<ResultProductImagesDto, UpdateProductImageDto>();
         }
     }
 }

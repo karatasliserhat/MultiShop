@@ -1,0 +1,61 @@
+﻿@model List<GetImagesWithProductDto>
+@{
+    ViewData["Title"] = "Kategoriler";
+    Layout = "~/Areas/Admin/Views/AdminLayout/_AdminLayout.cshtml";
+
+    int count = 0;
+}
+
+<div class="col-md-12">
+    <div class="chart-box">
+        <h4>Ürüne Fotoğraf Tablosu</h4>
+        <p>Ürün Fotoğrafı ile ilgili işlemlerinizi aşağıdaki tablo üzerinden gerçekleştirebilsiniz.</p>
+        <div class="bs-example" data-example-id="bordered-table">
+
+            <div class="text-start">
+                <a asp-action="CreateProductImage" asp-controller="ProductImage" asp-route-id="@ViewBag.dataProductId" class="btn btn-primary">Yeni Ürün Fotoğrafı</a>
+            </div>
+            <br />
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Ürün Adı</th>
+                        <th>Ürün Görseli</th>
+                        <th>Sil</th>
+                        <th>Güncelle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model is not null)
+                    {
+
+                        foreach (var item in Model)
+                        {
+                            count++;
+                            <tr>
+                                <th scope="row">@count</th>
+                                <td>@item.ProductName</td>
+                                <td><img src="@item.ImageUrl" alt="Alternate Text" width="50" height="50" /></td>
+                                <td><a asp-action="Delete" asp-controller="ProductImage" asp-route-id="@item.DataProtect" class="btn btn-danger">Sil</a></td>
+                                <td><a asp-action="Update" asp-controller="ProductImage" asp-route-id="@item.DataProtect" class="btn btn-success">Güncelle</a></td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+
+
+                        <tr>
+                            <td class="alert alert-warning" colspan="5">Ürüne Ait Görsel Yok</td>
+                        </tr>
+
+                    }
+                </tbody>
+
+
+
+            </table>
+        </div>
+    </div>
+</div>
