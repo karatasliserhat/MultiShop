@@ -12,7 +12,7 @@
             <form asp-controller="ProductImage" asp-action="Update" method="post">
                 <input type="hidden" asp-for="@Model.ProductId" />
                 <input type="hidden" asp-for="@Model.ProductImageId" />
-                <label class="form-label">Marka Görsel Linki</label>
+                <label class="form-label">Ürün Görsel Linki</label>
                 <input type="text" asp-for="@Model.ImageUrl" class="form-control" placeholder="Ürün Görsel Linkini Giriniz" />
                 <br />
                 <input type="submit" value="Ürün Görseli Güncelle" class="btn btn-info" />

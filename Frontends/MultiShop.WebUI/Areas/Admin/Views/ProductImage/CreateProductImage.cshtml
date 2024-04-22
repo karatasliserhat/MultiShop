@@ -1,6 +1,6 @@
 ﻿@model CreateProductImageDto
 @{
-    ViewData["Title"] = "CreateMarka";
+    ViewData["Title"] = "CreateProductImage";
     Layout = "~/Areas/Admin/Views/AdminLayout/_AdminLayout.cshtml";
 }
 
@@ -11,7 +11,7 @@
 
             <form asp-controller="ProductImage" asp-action="CreateProductImage" method="post">
                 <input type="hidden" asp-for="@Model.ProductId" value="@ViewBag.ProductId"/>
-                <label class="form-label">Marka Görsel Linki</label>
+                <label class="form-label">Ürün Görsel Linki</label>
                 <input type="text" asp-for="@Model.ImageUrl" class="form-control" placeholder="Ürün Görsel Linkini Giriniz" />
                 <br />
                 <input type="submit" value="Ürün Görseli Ekle" class="btn btn-info" />

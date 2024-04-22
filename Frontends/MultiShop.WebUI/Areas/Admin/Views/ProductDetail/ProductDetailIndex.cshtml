@@ -1,0 +1,62 @@
+﻿@model GetProductDetailWithProductDto
+@{
+    ViewData["Title"] = "Kategoriler";
+    Layout = "~/Areas/Admin/Views/AdminLayout/_AdminLayout.cshtml";
+
+    int count = 1;
+}
+
+<div class="col-md-12">
+    <div class="chart-box">
+        <h4>Ürüne Detay Bilgisi</h4>
+        <p>Ürün Detayları ile ilgili işlemlerinizi aşağıdaki tablo üzerinden gerçekleştirebilsiniz.<strong>Tema Bütünlüğü için sadece 1 ürüne ait 1 detay eklemesi yapınız...</strong></p>
+        <div class="bs-example" data-example-id="bordered-table">
+            @if (Model is null)
+            {
+                <div class="text-start">
+                    <a asp-action="CreateProductDetail" asp-controller="ProductDetail" asp-route-id="@ViewBag.dataProductId" class="btn btn-primary">Yeni Detay </a>
+                </div>
+            }
+            <br />
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Ürün Açıklaması</th>
+                        <th>Ürün Bilgisi</th>
+                        <th>Sil</th>
+                        <th>Güncelle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model is not null)
+                    {
+
+
+                        count++;
+                        <tr>
+                            <th scope="row">@count</th>
+                            <td>@Model.Descrpition</td>
+                            <td>@Model.Information</td>
+                            <td><a asp-action="Delete" asp-controller="ProductDetail" asp-route-id="@Model.DataProtect" class="btn btn-danger">Sil</a></td>
+                            <td><a asp-action="Update" asp-controller="ProductDetail" asp-route-id="@Model.DataProtect" class="btn btn-success">Güncelle</a></td>
+                        </tr>
+
+                    }
+                    else
+                    {
+
+
+                        <tr>
+                            <td class="alert alert-warning" colspan="5">Ürüne Ait Detay Yok</td>
+                        </tr>
+
+                    }
+                </tbody>
+
+
+
+            </table>
+        </div>
+    </div>
+</div>
