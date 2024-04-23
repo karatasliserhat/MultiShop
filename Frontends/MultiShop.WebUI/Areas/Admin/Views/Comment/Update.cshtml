@@ -1,0 +1,40 @@
+﻿@model UpdateCommentDto
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Areas/Admin/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="chart-box">
+
+        <div class="bs-example" data-example-id="bordered-table">
+
+            <form asp-controller="Comment" asp-action="Update" method="post">
+                <input type="hidden" asp-for="@Model.UserCommentId" />
+                <input type="hidden" asp-for="@Model.ProductId" />
+                <input type="hidden" asp-for="@Model.CreatedDate" />
+                <label class="form-label">Adınız Soyadınız</label>
+                <input type="text" asp-for="@Model.NameSurname" class="form-control" placeholder=" Adınızı ve Soyadınızı Giriniz" />
+                <br />
+                <label class="form-label">E-Posta</label>
+                <input type="email" asp-for="@Model.Email" class="form-control" placeholder="E-Posta Adresinizi Giriniz" />
+                <br />
+                <label class="form-label">Fotoğraf Linki</label>
+                <input type="text" asp-for="@Model.ImageUrl" class="form-control" placeholder="Fotoğraf Linkinizi Giriniz" />
+                <br />
+                <label class="form-label">Yıldız Sayınız</label>
+                <input type="number" asp-for="@Model.Rating" max="5" min="0" class="form-control" />
+                <br />
+                <label class="form-label">Yorumunuz</label>
+                <textarea asp-for="@Model.CommentDetail" rows="5" class="form-control">Yorumunuzu Yazınız</textarea>
+                <br />
+                <label class="form-label">Görünüm</label>
+                <select class="form-control" style="padding:0px 0px 0px 12px" asp-for="@Model.Status" asp-items="@ViewBag.SelectTrueFalse">
+                </select>
+                <br />
+                <input type="submit" value="Yorumu Güncelle" class="btn btn-info" />
+            </form>
+
+        </div>
+    </div>
+</div>

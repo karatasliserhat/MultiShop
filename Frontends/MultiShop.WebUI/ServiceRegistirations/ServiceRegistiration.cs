@@ -15,8 +15,7 @@ namespace MultiShop.WebUI.ServiceRegistirations
 
             Services.AddScoped<IApiSettings>(sp =>
             {
-                var data = sp.GetRequiredService<IOptions<ApiSettings>>().Value;
-                return data;
+                return sp.GetRequiredService<IOptions<ApiSettings>>().Value;
             });
             var scope = Services.BuildServiceProvider();
 
@@ -65,15 +64,15 @@ namespace MultiShop.WebUI.ServiceRegistirations
             {
                 opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
             });
-             Services.AddHttpClient<IOfferDiscountReadApiService, OfferDiscountReadApiService>(opt =>
-            {
-                opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
-            });
+            Services.AddHttpClient<IOfferDiscountReadApiService, OfferDiscountReadApiService>(opt =>
+           {
+               opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
+           });
             Services.AddHttpClient<IOfferDiscountCommandApiService, OfferDiscountCommandApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
-            }); 
-            
+            });
+
             Services.AddHttpClient<IBrandReadApiService, BrandReadService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
@@ -105,6 +104,14 @@ namespace MultiShop.WebUI.ServiceRegistirations
             Services.AddHttpClient<IProductDetailCommandApiService, ProductDetailCommandApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
+            });
+            Services.AddHttpClient<ICommentReadApiService, CommentReadApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiData.CommentApiUrl.ToString());
+            });
+            Services.AddHttpClient<ICommentCommandApiService, CommentCommandApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiData.CommentApiUrl.ToString());
             });
         }
     }
