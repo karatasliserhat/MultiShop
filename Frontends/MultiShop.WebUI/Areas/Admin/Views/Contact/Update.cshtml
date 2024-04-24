@@ -1,0 +1,25 @@
+﻿@model UpdateContactDto
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Areas/Admin/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="chart-box">
+
+        <div class="bs-example" data-example-id="bordered-table">
+
+            <form asp-controller="Contact" asp-action="Update" method="post">
+                @*<input type="hidden" asp-for="@Model.CategoryId" />
+                <label class="form-label">Gönderenin Adı Soyadı</label>
+                <input type="text" asp-for="@Model.Name" class="form-control" />
+                <br />
+                <label class="form-label">Kategori Görsel Linki</label>
+                <input type="text" asp-for="@Model.ImageUrl" class="form-control" placeholder="Kategori Görsel Linkini Giriniz" />
+                <br />
+                <input type="submit" value="Mesajı Güncelle" class="btn btn-info" />*@
+            </form>
+
+        </div>
+    </div>
+</div>

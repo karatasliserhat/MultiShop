@@ -1,4 +1,4 @@
-﻿
+﻿@model CreateContactDto
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/UILayout/_UILayout.cshtml";
@@ -10,24 +10,24 @@
         <div class="col-lg-7 mb-5">
             <div class="contact-form bg-light p-30">
                 <div id="success"></div>
-                <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                <form asp-action="CreateContact" asp-controller="Contact" method="post" novalidate="novalidate">
                     <div class="control-group">
-                        <input type="text" class="form-control" id="name" placeholder="Adınız"
-                               required="required" data-validation-required-message="Adınızı Giriniz" />
+                        <input type="text" class="form-control" asp-for="@Model.NameSurname" placeholder="Adınız Ve Soyadınız"
+                               required="required" data-validation-required-message="Adınızı ve Soyadınız Giriniz" />
                         <p class="help-block text-danger"></p>
                     </div>
                     <div class="control-group">
-                        <input type="email" class="form-control" id="email" placeholder="Eposta Adresiniz"
+                        <input type="email" class="form-control" asp-for="@Model.Email"placeholder="Eposta Adresiniz"
                                required="required" data-validation-required-message="Eposta Adresinizi Giriniz" />
                         <p class="help-block text-danger"></p>
                     </div>
                     <div class="control-group">
-                        <input type="text" class="form-control" id="subject" placeholder="Konu"
+                        <input type="text" class="form-control" asp-for="@Model.Subject" placeholder="Konu"
                                required="required" data-validation-required-message="Lütfen Konu Giriniz" />
                         <p class="help-block text-danger"></p>
                     </div>
                     <div class="control-group">
-                        <textarea class="form-control" rows="8" id="message" placeholder="Mesajınız"
+                        <textarea class="form-control" rows="8" asp-for="@Model.Message"placeholder="Mesajınız"
                                   required="required"
                                   data-validation-required-message="Lütfen Mesajınızı Yazınız"></textarea>
                         <p class="help-block text-danger"></p>

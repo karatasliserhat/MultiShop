@@ -1,0 +1,69 @@
+﻿@model List<ResultContactDto>
+@{
+    ViewData["Title"] = "Kategoriler";
+    Layout = "~/Areas/Admin/Views/AdminLayout/_AdminLayout.cshtml";
+
+    int count = 0;
+}
+
+<div class="col-md-12">
+    <div class="chart-box">
+        <h4>İletişim Mesaj Tablosu</h4>
+        <p>İletişim Mesajları ile ilgili işlemlerinizi aşağıdaki tablo üzerinden gerçekleştirebilsiniz.</p>
+        <div class="bs-example" data-example-id="bordered-table">
+
+            @*<div class="text-start">
+                    <a asp-action="CreateCategory" asp-controller="Category" class="btn btn-primary">Yeni Kategori</a>
+                </div>*@
+            <br />
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Gönderen</th>
+                        <th>Email</th>
+                        <th>Konu</th>
+                        <th>Mesaj</th>
+                        <th>Okundu Mu?</th>
+                        <th>Gönderim Tarihi</th>
+                        <th>Sil</th>
+                        <th>Güncelle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model is not null)
+                    {
+
+                        foreach (var item in Model)
+                        {
+                            count++;
+                            <tr>
+                                <th scope="row">@count</th>
+                                <td>@item.NameSurname</td>
+                                <td>@item.Email</td>
+                                <td>@item.Subject</td>
+                                <td>@item.Message</td>
+                                <td>@(item.IsRead?"Evet":"Hayır")</td>
+                                <td>@item.SendDate.ToShortDateString()</td>
+                                <td><a asp-action="Delete" asp-controller="Contact" asp-route-id="@item.DataProtect" class="btn btn-danger">Sil</a></td>
+                                <td><a asp-action="Update" asp-controller="Contact" asp-route-id="@item.DataProtect" class="btn btn-success">Güncelle</a></td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+
+
+                        <tr>
+                            <td class="alert alert-warning" colspan="9">Kayıt Yok</td>
+                        </tr>
+
+                    }
+                </tbody>
+
+
+
+            </table>
+        </div>
+    </div>
+</div>

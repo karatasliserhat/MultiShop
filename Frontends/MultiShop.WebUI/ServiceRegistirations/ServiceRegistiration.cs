@@ -23,6 +23,8 @@ namespace MultiShop.WebUI.ServiceRegistirations
 
             Services.AddScoped(typeof(IApiReadService<>), typeof(ApiReadService<>));
 
+
+            //Catalog Api
             Services.AddHttpClient<ICategoryReadApiService, CategoryReadApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
@@ -105,6 +107,16 @@ namespace MultiShop.WebUI.ServiceRegistirations
             {
                 opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
             });
+            Services.AddHttpClient<IContactReadApiService, ContactReadApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
+            });
+            Services.AddHttpClient<IContactCommandApiService, ContactCommandApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
+            });
+            //Catalog api End
+            //Comment Api
             Services.AddHttpClient<ICommentReadApiService, CommentReadApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CommentApiUrl.ToString());
@@ -112,7 +124,8 @@ namespace MultiShop.WebUI.ServiceRegistirations
             Services.AddHttpClient<ICommentCommandApiService, CommentCommandApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CommentApiUrl.ToString());
-            });
+            }); 
+            //Comment Api End
         }
     }
 }
