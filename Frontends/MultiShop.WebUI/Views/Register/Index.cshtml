@@ -1,0 +1,117 @@
+﻿@model RegisterDto
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Form-v4 by Colorlib</title>
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Font-->
+    <link rel="stylesheet" type="text/css" href="~/colorlib-regform-30/css/opensans-font.css">
+    <link rel="stylesheet" type="text/css" href="~/colorlib-regform-30/fonts/line-awesome/css/line-awesome.min.css">
+    <!-- Jquery -->
+    <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
+    <!-- Main Style Css -->
+    <link rel="stylesheet" href="~/colorlib-regform-30/css/style.css" />
+</head>
+<body class="form-v4">
+    <div class="page-content">
+        <div class="form-v4-content">
+            <div class="form-left">
+                <h2>MultiShop E-Ticaret</h2>
+                <p class="text-1">MultiShop projemiz üzerinden e-ticaret işlemlerini gerçekleştirebilmek, indirimli ürünler ve fırsatlardan haberdar olmak adına  dakikada kayıt işlemini gerçekleştirebilirin.</p>
+
+                <div class="form-left-last">
+                    <a href="#" class="account">Giriş Yap</a>
+                </div>
+            </div>
+            <form asp-action="Index" asp-controller="Register" class="form-detail" method="post">
+                <h2>Kayıt formu</h2>
+                <div class="form-group">
+                    <div class="form-row form-row-1">
+                        <label asp-for="@Model.Name">Adınız</label>
+                        <input type="text" asp-for="@Model.Name" id="first_name" class="input-text" required>
+                    </div>
+                    <div class="form-row form-row-1">
+                        <label asp-for="@Model.Surname">Soyadınız</label>
+                        <input type="text" asp-for="@Model.Surname" id="last_name" class="input-text" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label asp-for="@Model.UserName">Kullanıcı Adınız</label>
+                    <input type="text" asp-for="@Model.UserName" id="your_username" class="input-text" required>
+                </div>
+                <div class="form-row">
+                    <label asp-for="@Model.Email">Mail Adresiniz</label>
+                    <input type="text" asp-for="@Model.Email" id="your_email" class="input-text" required pattern="[^@@]+@@[^@@]+.[a-zA-Z]{2,6}">
+                </div>
+                <div class="form-group">
+                    <div class="form-row form-row-1 ">
+                        <label asp-for="@Model.Password">Şifre</label>
+                        <input type="password" asp-for="@Model.Password" id="password" class="input-text" required>
+                    </div>
+                    <div class="form-row form-row-1">
+                        <label asp-for="@Model.ConfirmPassword">Şifre Tekrar</label>
+                        <input type="password" asp-for="@Model.ConfirmPassword" id="comfirm_password" class="input-text" required>
+                    </div>
+                </div>
+                @*<div class="form-checkbox">
+                    <label class="container">
+                        <p>Şartları Okudum <a href="#" class="text">Kabul Ediyorum</a></p>
+                        <input type="checkbox" name="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>*@
+                <div class="form-row-last">
+                    <input type="submit" class="register" value="Kayıt Ol" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    @*<script>
+        // just for the demos, avoids form submit
+        jQuery.validator.setDefaults({
+            debug: true,
+            success: function (label) {
+                label.attr('id', 'valid');
+            },
+        });
+        $("#myform").validate({
+            rules: {
+                Password: "required",
+                ConfirmPassword: {
+                    equalTo: "#password"
+                }
+            },
+            messages: {
+                Name: {
+                    required: "Lütfen Adınızı Giriniz"
+                },
+                Surname: {
+                    required: "Lütfen Soyadınızı Giriniz"
+                },
+                UserName: {
+                    required: "Lütfen Kullanıcı Adınızı Giriniz"
+                },
+                Email: {
+                    required: "Lütfen Mail Adresinizi Giriniz"
+                },
+                Password: {
+                    required: "Lütfen Şifrenizi Giriniz"
+                },
+                ConfirmPassword: {
+                    required: "Lütfen Şifrenizi Tekrardan Giriniz",
+                    equalTo: "Şifreniz Uyuşmuyor"
+                }
+            }
+        });
+    </script>*@
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
