@@ -1,7 +1,10 @@
-catalog microservice => https://localhost:7070
-Discount microservice=> https://localhost:7071
-order Microservice => https://localhost:7072
-cargo MicroService => https://localhost:7073
-Basket MicroService => https://localhost:7074
-Comment MicroService => https://localhost:7075
-identity Microservice => https://localhost:5001
+Ocelot				  => http://localhost:5000
+identity Microservice => http://localhost:5001
+catalog microservice  => http://localhost:7070
+Discount microservice => http://localhost:7071
+order Microservice    => http://localhost:7072
+cargo MicroService    => http://localhost:7073
+Basket MicroService   => http://localhost:7074
+Comment MicroService  => http://localhost:7075
+Payment MicroService  => http://localhost:7076
+Image MicroService    => http://localhost:7077
