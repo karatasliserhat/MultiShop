@@ -6,7 +6,7 @@ namespace MultiShop.Shared.Services.Service
 {
     public class CategoryReadApiService : ApiReadService<ResultCategoryDto>, ICategoryReadApiService
     {
-        public CategoryReadApiService(HttpClient client) : base(client)
+        public CategoryReadApiService(HttpClient client, IAuthorizationTokenApiService authorizationTokenApiService) : base(client, authorizationTokenApiService)
         {
         }
     }

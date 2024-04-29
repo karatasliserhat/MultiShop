@@ -4,7 +4,7 @@
     {
         Task<ResultDto> GetByIdAsync(string controllerName, int id);
         Task<ResultDto> GetByIdAsync(string controllerName, string id);
-        Task<List<ResultDto>> GetListAsync(string controllerName);
-        Task<List<ResultDto>> GetListAsync(string controllerName, string actionName);
+        Task<List<ResultDto>> GetListAsync(string controllerName, string token);
+        Task<List<ResultDto>> GetListAsync(string controllerName, string actionName, string token);
     }
 }

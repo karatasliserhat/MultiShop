@@ -5,7 +5,7 @@ namespace MultiShop.Shared.Services.Service
 {
     public class ContactReadApiService : ApiReadService<ResultContactDto>, IContactReadApiService
     {
-        public ContactReadApiService(HttpClient client) : base(client)
+        public ContactReadApiService(HttpClient client, IAuthorizationTokenApiService authorizationTokenApiService) : base(client, authorizationTokenApiService)
         {
         }
     }

@@ -29,7 +29,10 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "İndirim Teklifleri";
             ViewBag.v3 = "İndirim Teklifleri Listesi";
-            var result = await _offerDiscountReadApiService.GetListAsync("OfferDiscounts");
+
+            string token = "";
+
+            var result = await _offerDiscountReadApiService.GetListAsync("OfferDiscounts", token);
             if (result is not null)
             {
                 result.ForEach(x => x.DataProtect = _dataProtector.Protect(x.OfferDiscountId));

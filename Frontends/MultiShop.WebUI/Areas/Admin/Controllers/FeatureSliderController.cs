@@ -34,8 +34,9 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Öne Çıkan Slider Görseller";
             ViewBag.v3 = "Öne Çıkan Slider Görsel Listesi";
+            string token = "";
 
-            var result = await _featureSliderReadApiService.GetListAsync("FeatureSliders");
+            var result = await _featureSliderReadApiService.GetListAsync("FeatureSliders", token);
             if (result.Count > 0)
             {
                 result.ForEach(x => x.DataProtect = _dataProtector.Protect(x.FeatureSliderId.ToString()));

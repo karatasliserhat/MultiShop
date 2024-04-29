@@ -28,8 +28,9 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Kategoriler";
             ViewBag.v3 = "Kategori Listesi";
+            string token = "";
 
-            var result = await _categoryReadApiService.GetListAsync("Categories");
+            var result = await _categoryReadApiService.GetListAsync("Categories",token);
             if (result.Count > 0)
             {
                 result.ForEach(x => x.DataProtect = _dataProtector.Protect(x.CategoryId.ToString()));

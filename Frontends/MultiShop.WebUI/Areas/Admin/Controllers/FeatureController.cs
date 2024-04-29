@@ -34,8 +34,9 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Öne Çıkan Alanlar";
             ViewBag.v3 = "Öne Çıkan Alan Listesi";
+            string token = "";
 
-            var result = await _FeatureReadApiService.GetListAsync("Features");
+            var result = await _FeatureReadApiService.GetListAsync("Features", token);
             if (result.Count > 0)
             {
                 result.ForEach(x => x.DataProtect = _dataProtector.Protect(x.FeatureId.ToString()));

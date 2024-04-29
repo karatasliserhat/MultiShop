@@ -31,7 +31,9 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var values = await _specialOfferReadApiService.GetListAsync("SpecialOffers");
+            string token = "";
+
+            var values = await _specialOfferReadApiService.GetListAsync("SpecialOffers", token);
             if (values.Count > 0)
             {
                 values.ForEach(x => x.DataProtect = _dataProtector.Protect(x.SpecialOfferId));

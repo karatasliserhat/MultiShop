@@ -37,8 +37,9 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Yorumlar";
             ViewBag.v3 = "Yorumlar Listesi";
+            string token = "";
 
-            var result = await _commentReadApiService.GetListAsync("Comments");
+            var result = await _commentReadApiService.GetListAsync("Comments", token);
             if (result.Any())
             {
 

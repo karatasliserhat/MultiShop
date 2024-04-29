@@ -9,7 +9,7 @@ namespace MultiShop.Shared.Services.Service
     public class ProductDetailReadApiService : ApiReadService<ResultProductDetailDtos>, IProductDetailReadApiService
     {
         private readonly HttpClient _client;
-        public ProductDetailReadApiService(HttpClient client) : base(client)
+        public ProductDetailReadApiService(HttpClient client, IAuthorizationTokenApiService authorizationTokenApiService) : base(client, authorizationTokenApiService)
         {
             _client = client;
         }

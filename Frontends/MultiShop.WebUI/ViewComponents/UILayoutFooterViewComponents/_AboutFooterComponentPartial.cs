@@ -6,15 +6,18 @@ namespace MultiShop.WebUI.ViewComponents.UILayoutFeatureViewComponents
     public class _AboutFooterComponentPartial : ViewComponent
     {
         private readonly IAboutReadApiService _aboutReadApiService;
-
-        public _AboutFooterComponentPartial(IAboutReadApiService aboutReadApiService)
+        private readonly IClientCredentialAccessTokenService _clientCredentialAccessTokenService;
+        public _AboutFooterComponentPartial(IAboutReadApiService aboutReadApiService, IClientCredentialAccessTokenService clientCredentialAccessTokenService)
         {
             _aboutReadApiService = aboutReadApiService;
+            _clientCredentialAccessTokenService = clientCredentialAccessTokenService;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var result = await _aboutReadApiService.GetListAsync("Abouts");
+            var token = await _clientCredentialAccessTokenService.GetClientCredenditalAccessToken();
+
+            var result = await _aboutReadApiService.GetListAsync("Abouts", token.AccessToken);
             if (result is not null)
             {
                 return View(result);

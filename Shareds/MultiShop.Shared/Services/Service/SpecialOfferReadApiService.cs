@@ -5,7 +5,7 @@ namespace MultiShop.Shared.Services.Service
 {
     public class SpecialOfferReadApiService : ApiReadService<ResultSpecialOfferDto>, ISpecialOfferReadApiService
     {
-        public SpecialOfferReadApiService(HttpClient client) : base(client)
+        public SpecialOfferReadApiService(HttpClient client,IAuthorizationTokenApiService authorizationTokenApiService) : base(client, authorizationTokenApiService)
         {
         }
     }

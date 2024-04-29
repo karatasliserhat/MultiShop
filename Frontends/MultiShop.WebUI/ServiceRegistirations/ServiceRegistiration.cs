@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Options;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Options;
 using MultiShop.Shared.Services.Abstract;
 using MultiShop.Shared.Services.Service;
 using MultiShop.Shared.Settings;
@@ -10,16 +12,56 @@ namespace MultiShop.WebUI.ServiceRegistirations
     {
         public static void AddServiceRegistiration(this IServiceCollection Services, IConfiguration Configuration)
         {
+            Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCookie(JwtBearerDefaults.AuthenticationScheme, opt =>
+            {
+                opt.LoginPath = new PathString("/Login/Index");
+                opt.LogoutPath = new PathString("/Login/Logout");
+                opt.AccessDeniedPath = new PathString("/Pages/AccessDenied");
+                opt.Cookie.HttpOnly = true;
+
+                opt.Cookie.SameSite = SameSiteMode.Strict;
+                opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+                opt.Cookie.Name = "MultiShopJwt";
+            });
+
+            Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, opts =>
+            {
+
+                opts.LoginPath = new PathString("/Login/SignIn");
+                opts.ExpireTimeSpan = TimeSpan.FromDays(5);
+                opts.Cookie.Name = "MultiShopCookie";
+                opts.SlidingExpiration = true;
+
+            });
+            Services.AddHttpClient();
+            Services.AddHttpContextAccessor();
+            Services.AddScoped<ILoginService, LoginService>();
+            Services.AddScoped<IAuthorizationTokenApiService, AuthorizationTokenApiService>();
+
             Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
             Services.Configure<ApiSettings>(Configuration.GetSection(nameof(ApiSettings)));
+            Services.Configure<ClientSettings>(Configuration.GetSection(nameof(ClientSettings)));
 
             Services.AddScoped<IApiSettings>(sp =>
             {
                 return sp.GetRequiredService<IOptions<ApiSettings>>().Value;
             });
+
+            Services.AddScoped<IClientSettings>(sp =>
+            {
+                return sp.GetRequiredService<IOptions<ClientSettings>>().Value;
+            });
+
+            Services.AddScoped<IIdentitySignInService, IdentitySignInService>();
+
+            Services.AddScoped<IClientCredentialAccessTokenService, ClientCredentialAccessTokenService>();
+
             var scope = Services.BuildServiceProvider();
 
+
             var apiData = scope.GetRequiredService<IOptions<ApiSettings>>().Value;
+
 
             Services.AddScoped(typeof(IApiReadService<>), typeof(ApiReadService<>));
 

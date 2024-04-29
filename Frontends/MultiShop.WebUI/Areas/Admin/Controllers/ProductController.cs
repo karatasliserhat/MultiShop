@@ -29,7 +29,9 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
 
         private async Task GetCategorySelectList()
         {
-            var data = await _categoryReadApiService.GetListAsync("Categories");
+            string token = "";
+
+            var data = await _categoryReadApiService.GetListAsync("Categories", token);
 
             ViewBag.Category = new SelectList(data, "CategoryId", "Name");
         }

@@ -7,7 +7,7 @@ namespace MultiShop.Shared.Services.Service
     public class CommentReadApiService : ApiReadService<ResultCommentDto>, ICommentReadApiService
     {
         private readonly HttpClient _client;
-        public CommentReadApiService(HttpClient client) : base(client)
+        public CommentReadApiService(HttpClient client, IAuthorizationTokenApiService authorizationTokenApiService) : base(client, authorizationTokenApiService)
         {
             _client = client;
         }

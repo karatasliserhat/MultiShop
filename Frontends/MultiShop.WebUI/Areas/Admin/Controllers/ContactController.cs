@@ -29,8 +29,9 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "İletişim Mesajları";
             ViewBag.v3 = "İletişim Mesaj Listesi";
+            string token = "";
 
-            var result = await _contactReadApiService.GetListAsync("Contacts");
+            var result = await _contactReadApiService.GetListAsync("Contacts", token);
             if (result.Count > 0)
             {
                 result.ForEach(x => x.DataProtect = _dataProtector.Protect(x.ContactId.ToString()));

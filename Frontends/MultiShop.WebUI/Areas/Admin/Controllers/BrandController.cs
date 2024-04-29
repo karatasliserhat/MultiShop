@@ -29,8 +29,8 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Markalar";
             ViewBag.v3 = "Marka Listesi";
-
-            var result = await _brandReadApiService.GetListAsync("Brands");
+            string token = "";
+            var result = await _brandReadApiService.GetListAsync("Brands",token);
             if (result.Count > 0)
             {
                 result.ForEach(x => x.DataProtect = _dataProtector.Protect(x.BrandId.ToString()));
