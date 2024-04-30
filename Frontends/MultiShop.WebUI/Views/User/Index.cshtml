@@ -1,0 +1,13 @@
+﻿@model UserDetailDto
+@{
+    Layout = null;
+}
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<div class="container">
+    <br /><br /><br />
+    <div><h1>Profil Bilgileri</h1></div>
+    <div class="alert alert-danger">UserId: @Model.Id</div>
+    <div class="alert alert-success">Ad-Soyad: @Model.Name @Model.Surname</div>
+    <div class="alert alert-warning">Kullanıcı Adı: @Model.Username</div>
+    <div class="alert alert-info">Email: @Model.Email</div>
+</div>

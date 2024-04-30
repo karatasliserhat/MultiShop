@@ -1,0 +1,24 @@
+  var result = await _identityCommandApiService.LoginAsync(userLoginDto);
+
+            if (result != null)
+            {
+                JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
+                var token = handler.ReadJwtToken(result.Token);
+                var claims = token.Claims.ToList();
+
+                if (result.Token is not null)
+                {
+                    claims.Add(new Claim("accessToken", result.Token));
+                    var claimsIdentity = new ClaimsIdentity(claims, JwtBearerDefaults.AuthenticationScheme);
+
+                    var autprops = new AuthenticationProperties
+                    {
+                        IsPersistent = true,
+                        ExpiresUtc = result.ExpireDate
+                    };
+
+                    await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), autprops);
+                    var id = _loginService.GetUserId;
+                    return RedirectToAction(nameof(Index), "Default");
+                }
+            }

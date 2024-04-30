@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
+using MultiShop.Shared.Handlers;
 using MultiShop.Shared.Services.Abstract;
 using MultiShop.Shared.Services.Service;
 using MultiShop.Shared.Settings;
@@ -56,6 +57,8 @@ namespace MultiShop.WebUI.ServiceRegistirations
             Services.AddScoped<IIdentitySignInService, IdentitySignInService>();
 
             Services.AddScoped<IClientCredentialAccessTokenService, ClientCredentialAccessTokenService>();
+
+            Services.AddScoped<ResourceOwnerPasswordTokenHandler>();
 
             var scope = Services.BuildServiceProvider();
 
@@ -178,6 +181,10 @@ namespace MultiShop.WebUI.ServiceRegistirations
             {
                 opt.BaseAddress = new Uri(apiData.IdentityApiUrl.ToString());
             });
+            Services.AddHttpClient<IUserService, UserService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiData.IdentityApiUrl.ToString());
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
             //Identity Api End
         }
     }

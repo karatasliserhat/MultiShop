@@ -27,47 +27,17 @@ namespace MultiShop.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(UserLoginDto userLoginDto)
         {
-            var result = await _identityCommandApiService.LoginAsync(userLoginDto);
-
-            if (result != null)
-            {
-                JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
-                var token = handler.ReadJwtToken(result.Token);
-                var claims = token.Claims.ToList();
-
-                if (result.Token is not null)
-                {
-                    claims.Add(new Claim("multishoptoken", result.Token));
-                    var claimsIdentity = new ClaimsIdentity(claims, JwtBearerDefaults.AuthenticationScheme);
-
-                    var autprops = new AuthenticationProperties
-                    {
-                        IsPersistent = true,
-                        ExpiresUtc = result.ExpireDate
-                    };
-
-                    await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), autprops);
-                    var id = _loginService.GetUserId;
-                    return RedirectToAction(nameof(Index), "Default");
-                }
-            }
-
+          
             return View();
 
         }
 
-        //public IActionResult SignIn()
-        //{
-        //    return View();
-        //}
-        //[HttpPost]
         public async Task<IActionResult> SignIn(SignInDto signInDto)
         {
             signInDto.UserName = "serhatkaratasli";
             signInDto.Password = "Password12*";
-
             await _identitySignInService.SignInAsync(signInDto);
-            return RedirectToAction(nameof(Index), "Test");
+            return RedirectToAction(nameof(Index), "User");
 
         }
     }
