@@ -48,7 +48,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v2 = "Ürün Detayları";
             ViewBag.v3 = "Ürün Detay Ekleme";
             ViewBag.ProductId = _dataProtector.Unprotect(id);
-            return View();
+            return View(new CreateProductDetailDto());
         }
         [HttpPost]
         public async Task<IActionResult> CreateProductDetail(CreateProductDetailDto createProductDetailDto)

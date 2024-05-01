@@ -30,9 +30,8 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v2 = "İndirim Teklifleri";
             ViewBag.v3 = "İndirim Teklifleri Listesi";
 
-            string token = "";
 
-            var result = await _offerDiscountReadApiService.GetListAsync("OfferDiscounts", token);
+            var result = await _offerDiscountReadApiService.GetListAsync("OfferDiscounts");
             if (result is not null)
             {
                 result.ForEach(x => x.DataProtect = _dataProtector.Protect(x.OfferDiscountId));
@@ -47,7 +46,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "İndirim Teklifleri";
             ViewBag.v3 = "Yeni İndirim Teklif Girişi";
-            return View();
+            return View(new CreateOfferDiscountDto());
         }
         [HttpPost]
         public async Task<IActionResult> CreateOfferDiscount(CreateOfferDiscountDto createOfferDiscountDto)

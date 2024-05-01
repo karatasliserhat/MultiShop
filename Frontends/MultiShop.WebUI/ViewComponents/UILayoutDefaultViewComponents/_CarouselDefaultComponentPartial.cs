@@ -6,18 +6,15 @@ namespace MultiShop.WebUI.ViewComponents.UILayoutDefaultViewComponents
     public class _CarouselDefaultComponentPartial : ViewComponent
     {
         private readonly IFeatureSliderReadApiService _featureSliderReadApiService;
-        private readonly IClientCredentialAccessTokenService _clientCredentialAccessTokenService;
-        public _CarouselDefaultComponentPartial(IFeatureSliderReadApiService featureSliderReadApiService, IClientCredentialAccessTokenService clientCredentialAccessTokenService)
+        public _CarouselDefaultComponentPartial(IFeatureSliderReadApiService featureSliderReadApiService)
         {
             _featureSliderReadApiService = featureSliderReadApiService;
-            _clientCredentialAccessTokenService = clientCredentialAccessTokenService;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var token = await _clientCredentialAccessTokenService.GetClientCredenditalAccessToken();
 
-            var result = await _featureSliderReadApiService.GetListAsync("FeatureSliders", token.AccessToken);
+            var result = await _featureSliderReadApiService.GetListAsync("FeatureSliders");
 
             if (result is not null)
             {

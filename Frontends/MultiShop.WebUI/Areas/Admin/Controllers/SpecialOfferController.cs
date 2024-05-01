@@ -31,9 +31,11 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            string token = "";
-
-            var values = await _specialOfferReadApiService.GetListAsync("SpecialOffers", token);
+            ViewBag.v0 = "Özel Teklif İşlemleri";
+            ViewBag.v1 = "Ana Sayfa";
+            ViewBag.v2 = "Özel Teklifler";
+            ViewBag.v3 = "Özel Teklif Listesi";
+            var values = await _specialOfferReadApiService.GetListAsync("SpecialOffers");
             if (values.Count > 0)
             {
                 values.ForEach(x => x.DataProtect = _dataProtector.Protect(x.SpecialOfferId));
@@ -51,7 +53,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v3 = "Özel Teklif Girişi";
 
             SelectEnumTrueFalse();
-            return View();
+            return View(new CreateSpecialOfferDto());
         }
         [HttpPost]
         public async Task<IActionResult> CreateSpecialOffer(CreateSpecialOfferDto createSpecialOfferDto)

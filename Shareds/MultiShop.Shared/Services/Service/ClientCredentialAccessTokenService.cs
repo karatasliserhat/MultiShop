@@ -1,4 +1,6 @@
-﻿using MultiShop.DtoLayer;
+﻿using IdentityModel.AspNetCore.AccessTokenManagement;
+using IdentityModel.Client;
+using MultiShop.DtoLayer;
 using MultiShop.Shared.Services.Abstract;
 using MultiShop.Shared.Settings;
 using System.Text.Json.Nodes;
@@ -9,33 +11,43 @@ namespace MultiShop.Shared.Services.Service
     {
         private readonly HttpClient _httpClient;
         private readonly IClientSettings _clientSettings;
-
-        public ClientCredentialAccessTokenService(HttpClient httpClient, IClientSettings clientSettings)
+        private readonly IClientAccessTokenCache _cachingAccessTokenCache;
+        public ClientCredentialAccessTokenService(HttpClient httpClient, IClientSettings clientSettings, IClientAccessTokenCache cachingAccessTokenCache)
         {
             _httpClient = httpClient;
             _clientSettings = clientSettings;
+            _cachingAccessTokenCache = cachingAccessTokenCache;
         }
 
         public async Task<AccessTokenDto> GetClientCredenditalAccessToken()
         {
-            var request = new HttpRequestMessage
+            var token1 = await _cachingAccessTokenCache.GetAsync("multishopaccesstoken");
+            if (token1 is not null)
             {
-                Method = HttpMethod.Post,
-                RequestUri = new Uri(_clientSettings.TokenUrl),
-                Content = new FormUrlEncodedContent(new Dictionary<string, string>()
+                return new AccessTokenDto { AccessToken = token1.AccessToken };
+            }
+
+            var discoveryEndPoint = await _httpClient.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest { 
+            
+                Address=_clientSettings.DiscoveryUrl,
+                Policy= new DiscoveryPolicy
                 {
-                    {"client_id",_clientSettings.MultiShopVisitorClient.ClientId },
-                    {"client_secret",_clientSettings.MultiShopVisitorClient.ClientSecret },
-                    {"grant_type",_clientSettings.MultiShopVisitorClient.GrantType }
-                })
+                    RequireHttps=false
+                }
+            
+            });
 
-
+            var clientCredentialTokenRequest = new ClientCredentialsTokenRequest
+            {
+                ClientId = _clientSettings.MultiShopVisitorClient.ClientId,
+                ClientSecret = _clientSettings.MultiShopVisitorClient.ClientSecret,
+                Address = discoveryEndPoint.TokenEndpoint
             };
-            var response = await _httpClient.SendAsync(request);
-            var content = await response.Content.ReadAsStringAsync();
-            var token = JsonObject.Parse(content);
 
-            return new AccessTokenDto { AccessToken = token["access_token"].ToString() };
+            var token2 = await _httpClient.RequestClientCredentialsTokenAsync(clientCredentialTokenRequest);
+            await _cachingAccessTokenCache.SetAsync("multishopaccesstoken", token2.AccessToken, token2.ExpiresIn);
+
+            return new AccessTokenDto { AccessToken= token2.AccessToken };
         }
     }
 }

@@ -7,7 +7,7 @@ namespace MultiShop.Shared.Services.Service
     public class ProductImageReadApiService : ApiReadService<ResultProductImagesDto>, IProductImageReadApiService
     {
         private readonly HttpClient _httpClient;
-        public ProductImageReadApiService(HttpClient client, IAuthorizationTokenApiService authorizationTokenApiService) : base(client, authorizationTokenApiService)
+        public ProductImageReadApiService(HttpClient client) : base(client)
         {
             _httpClient = client;
         }

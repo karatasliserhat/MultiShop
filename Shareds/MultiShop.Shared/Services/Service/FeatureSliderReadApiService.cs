@@ -5,7 +5,7 @@ namespace MultiShop.Shared.Services.Service
 {
     public class FeatureSliderReadApiService : ApiReadService<ResultFeatureSliderDto>, IFeatureSliderReadApiService
     {
-        public FeatureSliderReadApiService(HttpClient client, IAuthorizationTokenApiService authorizationTokenApiService) : base(client, authorizationTokenApiService)
+        public FeatureSliderReadApiService(HttpClient client) : base(client)
         {
         }
     }

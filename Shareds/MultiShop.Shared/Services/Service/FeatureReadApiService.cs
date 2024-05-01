@@ -5,7 +5,7 @@ namespace MultiShop.Shared.Services.Service
 {
     public class FeatureReadApiService : ApiReadService<ResultFeatureDto>, IFeatureReadApiService
     {
-        public FeatureReadApiService(HttpClient client, IAuthorizationTokenApiService authorizationTokenApiService) : base(client, authorizationTokenApiService)
+        public FeatureReadApiService(HttpClient client) : base(client)
         {
         }
     }

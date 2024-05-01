@@ -21,16 +21,18 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             _categoryCommandApiService = categoryCommandApiService;
             _mapper = mapper;
         }
-
+        public void ViewBagList(string v0, string v1, string v2, string v3)
+        {
+            ViewBag.v0 = v0;
+            ViewBag.v1 = v1;
+            ViewBag.v2 = v2;
+            ViewBag.v3 = v3;
+        }
         public async Task<IActionResult> Index()
         {
-            ViewBag.v0 = "Kategori İşlemleri";
-            ViewBag.v1 = "Ana Sayfa";
-            ViewBag.v2 = "Kategoriler";
-            ViewBag.v3 = "Kategori Listesi";
-            string token = "";
+            ViewBagList("Kategori İşlemleri", "Ana Sayfa", "Kategoriler", "Kategori Listesi");
 
-            var result = await _categoryReadApiService.GetListAsync("Categories",token);
+            var result = await _categoryReadApiService.GetListAsync("Categories");
             if (result.Count > 0)
             {
                 result.ForEach(x => x.DataProtect = _dataProtector.Protect(x.CategoryId.ToString()));
@@ -41,11 +43,8 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult CreateCategory()
         {
-            ViewBag.v0 = "Kategori İşlemleri";
-            ViewBag.v1 = "Ana Sayfa";
-            ViewBag.v2 = "Kategoriler";
-            ViewBag.v3 = "Yeni Kategori Girişi";
-            return View();
+            ViewBagList("Kategori İşlemleri", "Ana Sayfa", "Kategoriler", "Yeni Kategori Girişi");
+            return View(new CreateCategoryDto());
         }
         [HttpPost]
         public async Task<IActionResult> CreateCategory(CreateCategoryDto createCategoryDto)
@@ -59,11 +58,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Update(string id)
         {
-            ViewBag.v0 = "Kategori İşlemleri";
-            ViewBag.v1 = "Ana Sayfa";
-            ViewBag.v2 = "Kategoriler";
-            ViewBag.v3 = "Kategori Güncelleme";
-
+            ViewBagList("Kategori İşlemleri", "Ana Sayfa", "Kategoriler", "Kategori Güncelleme");
             var result = _mapper.Map<UpdateCategoryDto>(await _categoryReadApiService.GetByIdAsync("Categories", _dataProtector.Unprotect(id)));
             if (result is not null)
             {

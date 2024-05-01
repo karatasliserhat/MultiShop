@@ -28,8 +28,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Hakkımızda";
             ViewBag.v3 = "Hakkımızda Listesi";
-            string token = "";
-            var result = await _AboutReadApiService.GetListAsync("Abouts", token);
+            var result = await _AboutReadApiService.GetListAsync("Abouts");
             if (result.Count > 0)
             {
                 result.ForEach(x => x.DataProtect = _dataProtector.Protect(x.AboutId.ToString()));
@@ -44,7 +43,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Hakkımızda";
             ViewBag.v3 = "Yeni Hakkımızda Girişi";
-            return View();
+            return View(new CreateAboutDto());
         }
         [HttpPost]
         public async Task<IActionResult> CreateAbout(CreateAboutDto createAboutDto)

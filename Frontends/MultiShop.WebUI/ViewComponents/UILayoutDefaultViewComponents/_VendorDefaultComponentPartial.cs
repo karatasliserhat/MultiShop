@@ -6,18 +6,15 @@ namespace MultiShop.WebUI.ViewComponents.UILayoutDefaultViewComponents
     public class _VendorDefaultComponentPartial:ViewComponent
     {
         private readonly IBrandReadApiService _brandReadApiService;
-        private readonly IClientCredentialAccessTokenService _clientCredentialAccessTokenService;
-        public _VendorDefaultComponentPartial(IBrandReadApiService brandReadApiService, IClientCredentialAccessTokenService clientCredentialAccessTokenService)
+        public _VendorDefaultComponentPartial(IBrandReadApiService brandReadApiService)
         {
             _brandReadApiService = brandReadApiService;
-            _clientCredentialAccessTokenService = clientCredentialAccessTokenService;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var token = await _clientCredentialAccessTokenService.GetClientCredenditalAccessToken();
 
-            var result = await _brandReadApiService.GetListAsync("Brands", token.AccessToken);
+            var result = await _brandReadApiService.GetListAsync("Brands");
             if (result is not null)
             {
                 return View(result);

@@ -49,7 +49,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v2 = "Ürün Fotoğrafları";
             ViewBag.v3 = "Yeni Ürün Fotoğraf Girişi";
             ViewBag.ProductId = _dataProtector.Unprotect(id);
-            return View();
+            return View(new CreateProductImageDto());
         }
         [HttpPost]
         public async Task<IActionResult> CreateProductImage(CreateProductImageDto createProductImageDto)

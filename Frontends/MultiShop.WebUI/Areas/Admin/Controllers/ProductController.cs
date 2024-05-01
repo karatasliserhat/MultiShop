@@ -29,9 +29,8 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
 
         private async Task GetCategorySelectList()
         {
-            string token = "";
 
-            var data = await _categoryReadApiService.GetListAsync("Categories", token);
+            var data = await _categoryReadApiService.GetListAsync("Categories");
 
             ViewBag.Category = new SelectList(data, "CategoryId", "Name");
         }
@@ -60,7 +59,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
 
             await GetCategorySelectList();
 
-            return View();
+            return View(new CreateProductDto());
         }
         [HttpPost]
         public async Task<IActionResult> CreateProduct(CreateProductDto createProductDto)

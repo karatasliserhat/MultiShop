@@ -1,4 +1,4 @@
-﻿@model UserLoginDto
+﻿@model SignInDto
 @{
     Layout = null;
 }
@@ -41,13 +41,13 @@
                         <input type="password" asp-for="@Model.Password" id="password" class="input-text" required>
                     </div>
                 </div>
-                <div class="form-checkbox">
+                @*<div class="form-checkbox">
                         <label class="container">
                             <p>Beni Hatırla</p>
-                            <input type="checkbox" asp-for="@Model.IsRememberMe" checked >
+                            <input type="checkbox" asp-for="@Model" checked >
                             <span class="checkmark"></span>
                         </label>
-                    </div>
+                    </div>*@
                 <div class="form-row-last">
                     <input type="submit" class="register" value="Giriş Yap" />
                 </div>

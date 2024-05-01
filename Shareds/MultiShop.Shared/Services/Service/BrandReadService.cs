@@ -5,7 +5,7 @@ namespace MultiShop.Shared.Services.Service
 {
     public class BrandReadService : ApiReadService<ResultBrandDto>, IBrandReadApiService
     {
-        public BrandReadService(HttpClient client, IAuthorizationTokenApiService authorizationTokenApiService) : base(client, authorizationTokenApiService)
+        public BrandReadService(HttpClient client) : base(client)
         {
         }
     }

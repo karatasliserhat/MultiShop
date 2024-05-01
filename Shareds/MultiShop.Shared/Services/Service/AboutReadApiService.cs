@@ -5,7 +5,7 @@ namespace MultiShop.Shared.Services.Service
 {
     public class AboutReadApiService : ApiReadService<ResultAboutDto>, IAboutReadApiService
     {
-        public AboutReadApiService(HttpClient client, IAuthorizationTokenApiService authorizationTokenApiService) : base(client, authorizationTokenApiService)
+        public AboutReadApiService(HttpClient client) : base(client)
         {
         }
     }

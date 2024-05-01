@@ -35,6 +35,7 @@ namespace MultiShop.WebUI.ServiceRegistirations
 
             });
             Services.AddHttpClient();
+            Services.AddAccessTokenManagement();
             Services.AddHttpContextAccessor();
             Services.AddScoped<ILoginService, LoginService>();
             Services.AddScoped<IAuthorizationTokenApiService, AuthorizationTokenApiService>();
@@ -60,6 +61,8 @@ namespace MultiShop.WebUI.ServiceRegistirations
 
             Services.AddScoped<ResourceOwnerPasswordTokenHandler>();
 
+            Services.AddScoped<ClientCredentialTokenHandler>();
+
             var scope = Services.BuildServiceProvider();
 
 
@@ -73,103 +76,123 @@ namespace MultiShop.WebUI.ServiceRegistirations
             Services.AddHttpClient<ICategoryReadApiService, CategoryReadApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
-            });
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
             Services.AddHttpClient<ICategoryCommandApiService, CategoryCommandApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
-            });
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
             Services.AddHttpClient<IProductReadApiService, ProductReadApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
-            });
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
             Services.AddHttpClient<IProductCommandApiService, ProductCommandApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
-            });
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
             Services.AddHttpClient<IFeatureSliderReadApiService, FeatureSliderReadApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
-            });
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
             Services.AddHttpClient<IFeatureSliderCommandApiService, FeatureSliderCommandApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
-            });
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
             Services.AddHttpClient<ISpecialOfferReadApiService, SpecialOfferReadApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
-            });
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
             Services.AddHttpClient<ISpecialOfferCommandApiService, SpecialOfferCommandApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
-            });
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
             Services.AddHttpClient<IFeatureReadApiService, FeatureReadApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
-            });
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
             Services.AddHttpClient<IFeatureCommandApiService, FeatureCommandApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
-            });
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
             Services.AddHttpClient<IOfferDiscountReadApiService, OfferDiscountReadApiService>(opt =>
            {
                opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
-           });
+           }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
             Services.AddHttpClient<IOfferDiscountCommandApiService, OfferDiscountCommandApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
-            });
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
             Services.AddHttpClient<IBrandReadApiService, BrandReadService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
-            });
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
             Services.AddHttpClient<IBrandCommandApiService, BrandCommandService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
-            });
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
             Services.AddHttpClient<IAboutReadApiService, AboutReadApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
-            });
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
             Services.AddHttpClient<IAboutCommandApiService, AboutCommandApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
-            });
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
             Services.AddHttpClient<IProductImageReadApiService, ProductImageReadApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
-            });
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
             Services.AddHttpClient<IProductImageCommandApiService, ProductImageCommandApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
-            });
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
             Services.AddHttpClient<IProductDetailReadApiService, ProductDetailReadApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
-            });
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
             Services.AddHttpClient<IProductDetailCommandApiService, ProductDetailCommandApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
-            });
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
             Services.AddHttpClient<IContactReadApiService, ContactReadApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
-            });
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
             Services.AddHttpClient<IContactCommandApiService, ContactCommandApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CatalogApiUrl.ToString());
-            });
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
             //Catalog api End
             //Comment Api
             Services.AddHttpClient<ICommentReadApiService, CommentReadApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CommentApiUrl.ToString());
-            });
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
             Services.AddHttpClient<ICommentCommandApiService, CommentCommandApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.CommentApiUrl.ToString());
-            });
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
             //Comment Api End
 
             //Identity Api

@@ -6,18 +6,15 @@ namespace MultiShop.WebUI.ViewComponents.UILayoutDefaultViewComponents
     public class _SpeacialOfferDefaultCarouselComponentPartial : ViewComponent
     {
         private readonly ISpecialOfferReadApiService _specialOfferReadApiService;
-        private readonly IClientCredentialAccessTokenService _clientCredentialAccessTokenService;
-        public _SpeacialOfferDefaultCarouselComponentPartial(ISpecialOfferReadApiService specialOfferReadApiService, IClientCredentialAccessTokenService clientCredentialAccessTokenService)
+        public _SpeacialOfferDefaultCarouselComponentPartial(ISpecialOfferReadApiService specialOfferReadApiService)
         {
             _specialOfferReadApiService = specialOfferReadApiService;
-            _clientCredentialAccessTokenService = clientCredentialAccessTokenService;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var token = await _clientCredentialAccessTokenService.GetClientCredenditalAccessToken();
 
-            var result = await _specialOfferReadApiService.GetListAsync("SpecialOffers", token.AccessToken);
+            var result = await _specialOfferReadApiService.GetListAsync("SpecialOffers");
             if (result is not null)
             {
                 return View(result);

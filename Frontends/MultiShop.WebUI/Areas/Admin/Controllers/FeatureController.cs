@@ -34,9 +34,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Öne Çıkan Alanlar";
             ViewBag.v3 = "Öne Çıkan Alan Listesi";
-            string token = "";
-
-            var result = await _FeatureReadApiService.GetListAsync("Features", token);
+            var result = await _FeatureReadApiService.GetListAsync("Features");
             if (result.Count > 0)
             {
                 result.ForEach(x => x.DataProtect = _dataProtector.Protect(x.FeatureId.ToString()));
@@ -53,7 +51,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v3 = "Yeni Öne Çıkan Alan Girişi";
 
             SelectTrueFalse();
-            return View();
+            return View(new CreateFeatureDto());
         }
         [HttpPost]
         public async Task<IActionResult> CreateFeature(CreateFeatureDto createFeatureDto)

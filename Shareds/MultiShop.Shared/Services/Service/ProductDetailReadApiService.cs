@@ -1,7 +1,6 @@
 ﻿using MultiShop.DtoLayer.CatalogDtos;
 using MultiShop.Shared.Services.Abstract;
 using System.Net;
-using System.Net.Http.Json;
 using System.Text.Json;
 
 namespace MultiShop.Shared.Services.Service
@@ -9,7 +8,7 @@ namespace MultiShop.Shared.Services.Service
     public class ProductDetailReadApiService : ApiReadService<ResultProductDetailDtos>, IProductDetailReadApiService
     {
         private readonly HttpClient _client;
-        public ProductDetailReadApiService(HttpClient client, IAuthorizationTokenApiService authorizationTokenApiService) : base(client, authorizationTokenApiService)
+        public ProductDetailReadApiService(HttpClient client) : base(client)
         {
             _client = client;
         }

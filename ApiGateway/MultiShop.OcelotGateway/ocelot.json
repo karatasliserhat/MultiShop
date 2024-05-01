@@ -11,7 +11,7 @@
         }
       ],
       "UpstreamPathTemplate": "/services/catalog/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Update", "Delete" ],
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "UpstreamScheme": "http",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "OcelotApiGatewayScheme",
@@ -29,7 +29,7 @@
         }
       ],
       "UpstreamPathTemplate": "/services/discount/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Update", "Delete" ],
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "UpstreamScheme": "http",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "OcelotApiGatewayScheme",
@@ -47,7 +47,7 @@
         }
       ],
       "UpstreamPathTemplate": "/services/order/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Update", "Delete" ],
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "UpstreamScheme": "http",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "OcelotApiGatewayScheme",
@@ -65,7 +65,7 @@
         }
       ],
       "UpstreamPathTemplate": "/services/cargo/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Update", "Delete" ],
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "UpstreamScheme": "http",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "OcelotApiGatewayScheme",
@@ -83,7 +83,7 @@
         }
       ],
       "UpstreamPathTemplate": "/services/basket/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Update", "Delete" ],
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "UpstreamScheme": "http",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "OcelotApiGatewayScheme",
@@ -101,7 +101,7 @@
         }
       ],
       "UpstreamPathTemplate": "/services/comment/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Update", "Delete" ],
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "UpstreamScheme": "http",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "OcelotApiGatewayScheme",
@@ -119,7 +119,7 @@
         }
       ],
       "UpstreamPathTemplate": "/services/payment/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Update", "Delete" ],
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "UpstreamScheme": "http",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "OcelotApiGatewayScheme",
@@ -137,7 +137,7 @@
         }
       ],
       "UpstreamPathTemplate": "/services/image/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Update", "Delete" ],
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "UpstreamScheme": "http",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "OcelotApiGatewayScheme",

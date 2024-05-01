@@ -34,9 +34,8 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Öne Çıkan Slider Görseller";
             ViewBag.v3 = "Öne Çıkan Slider Görsel Listesi";
-            string token = "";
 
-            var result = await _featureSliderReadApiService.GetListAsync("FeatureSliders", token);
+            var result = await _featureSliderReadApiService.GetListAsync("FeatureSliders");
             if (result.Count > 0)
             {
                 result.ForEach(x => x.DataProtect = _dataProtector.Protect(x.FeatureSliderId.ToString()));
@@ -53,7 +52,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v3 = "Yeni Öne Çıkan Slider Görsel Girişi";
 
             SelectTrueFalse();
-            return View();
+            return View(new CreateFeatureSliderDto());
         }
         [HttpPost]
         public async Task<IActionResult> CreateFeatureSlider(CreateFeatureSliderDto createFeatureSliderDto)

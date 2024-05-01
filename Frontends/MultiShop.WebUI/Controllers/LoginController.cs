@@ -1,10 +1,6 @@
-﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer;
 using MultiShop.Shared.Services.Abstract;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
 
 namespace MultiShop.WebUI.Controllers
 {
@@ -22,23 +18,15 @@ namespace MultiShop.WebUI.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View(new UserLoginDto());
+            return View(new SignInDto());
         }
         [HttpPost]
-        public async Task<IActionResult> Index(UserLoginDto userLoginDto)
+        public async Task<IActionResult> Index(SignInDto signInDto)
         {
-          
-            return View();
-
-        }
-
-        public async Task<IActionResult> SignIn(SignInDto signInDto)
-        {
-            signInDto.UserName = "serhatkaratasli";
-            signInDto.Password = "Password12*";
             await _identitySignInService.SignInAsync(signInDto);
             return RedirectToAction(nameof(Index), "User");
 
         }
+
     }
 }
