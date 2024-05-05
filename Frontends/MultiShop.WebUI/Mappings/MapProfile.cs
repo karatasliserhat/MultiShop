@@ -32,6 +32,11 @@ namespace MultiShop.WebUI.Mappings
 
             CreateMap<ResultCommentDto, UpdateCommentDto>();
             CreateMap<ResultContactDto, UpdateContactDto>();
+
+            CreateMap<ResultProductDto, BasketItemDto>().ForMember(x => x.ProductId, x => x.MapFrom(x => x.ProductId))
+                .ForMember(x => x.ProductName, x => x.MapFrom(x => x.Name))
+                .ForMember(x => x.Price, x => x.MapFrom(x => x.Price))
+                .ForMember(x => x.ProductImageUrl, x => x.MapFrom(x => x.ImageUrl)).ReverseMap();
         }
     }
 }

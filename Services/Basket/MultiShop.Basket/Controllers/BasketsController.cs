@@ -16,7 +16,7 @@ namespace MultiShop.Basket.Controllers
 
         public BasketsController(IBasketService basketService, ILoginService loginService)
         {
-            
+
             _basketService = basketService;
             _loginService = loginService;
         }
@@ -24,7 +24,15 @@ namespace MultiShop.Basket.Controllers
         [HttpGet]
         public async Task<IActionResult> GetMyBasketDetail()
         {
-            return Ok(await _basketService.GetBasketAsync(_loginService.GetUserId));
+            var values = await _basketService.GetBasketAsync(_loginService.GetUserId);
+            if (values is null)
+            {
+                values = new BasketTotalDto();
+                values.UserId = _loginService.GetUserId;
+                values.BasketItems = new List<BasketItemDto>();
+                values.DiscountRate = 0;
+            }
+            return Ok(values);
         }
         [HttpPost]
         public async Task<IActionResult> SaveMyBasket(BasketTotalDto basketTotalDto)
