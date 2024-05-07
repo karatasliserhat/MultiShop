@@ -221,6 +221,18 @@ namespace MultiShop.WebUI.ServiceRegistirations
                 opt.BaseAddress = new Uri(apiData.BasketApiUrl);
             }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
             //Basket Api End
+
+            //Discount Api Start
+            Services.AddHttpClient<IDiscountReadApiService, DiscountReadApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiData.DiscountApiUrl);
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+            Services.AddHttpClient<IDiscountCommandApiService, DiscountCommandApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiData.DiscountApiUrl);
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+            //Discount Api End
         }
     }
 }

@@ -37,6 +37,8 @@ namespace MultiShop.WebUI.Mappings
                 .ForMember(x => x.ProductName, x => x.MapFrom(x => x.Name))
                 .ForMember(x => x.Price, x => x.MapFrom(x => x.Price))
                 .ForMember(x => x.ProductImageUrl, x => x.MapFrom(x => x.ImageUrl)).ReverseMap();
+
+            CreateMap<BasketTotalDto, BasketDiscountCalculateDto>().ReverseMap();
         }
     }
 }

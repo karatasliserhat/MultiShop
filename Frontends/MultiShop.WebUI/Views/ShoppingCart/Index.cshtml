@@ -7,7 +7,7 @@
 <div class="container-fluid">
     <div class="row px-xl-5">
         
-        @await Component.InvokeAsync("_ShoppinCartProductListComponentPartial")
+        @await Component.InvokeAsync("_ShoppinCartProductListComponentPartial", ViewBag.BasketDiscountCalculate)
         @await Component.InvokeAsync("_ShoppingCartDiscountComponentPartial")
         
     </div>

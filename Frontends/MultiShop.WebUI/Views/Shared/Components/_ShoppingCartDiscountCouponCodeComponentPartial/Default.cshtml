@@ -1,0 +1,9 @@
+﻿@model GetDiscountCodeDto
+<form class="mb-30" asp-action="GetDiscountDetailCode" asp-controller="Discount">
+    <div class="input-group">
+        <input type="text" class="form-control border-0 p-4" asp-for="@Model.Code"  a placeholder="Kupon Kodunuz">
+        <div class="input-group-append">
+            <button class="btn btn-primary">Kuponu Uygula</button>
+        </div>
+    </div>
+</form>
