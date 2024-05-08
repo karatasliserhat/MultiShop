@@ -4,6 +4,7 @@
     {
         const decimal tax = 10;
         const decimal percent = 100;
+        public readonly decimal cargoPrice = 20;
         public int DiscountRate { get; set; }
         public List<BasketItemDto> BasketItems { get; set; }
         public decimal TotalPrice
@@ -14,5 +15,7 @@
         public decimal AmountIncludingTax { get => TotalPrice + TaxAmount; }
 
         public decimal DiscountedAmaunt { get => AmountIncludingTax - (AmountIncludingTax / percent) * Convert.ToDecimal(DiscountRate); }
+
+        public decimal TotalDiscountAmauntAndCargoPrice { get => DiscountedAmaunt + cargoPrice; }
     }
 }

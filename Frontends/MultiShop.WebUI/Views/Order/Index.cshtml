@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/UILayout/_UILayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row px-xl-5">
+
+        @await Component.InvokeAsync("_OrderAddressComponentPartial")
+
+        <div class="col-lg-4">
+            <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Sipariş Özeti</span></h5>
+
+            @await Component.InvokeAsync("_OrderShoppingDetailComponentPartial", ViewBag.BasketDiscountCalculate)
+
+            @await Component.InvokeAsync("_OrderPaymentComponentPartial")
+            
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+﻿@model CreateAddressDto
+<div class="col-lg-8">
+    <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Sipariş Teslimat Ve Fatura Adresiniz</span></h5>
+    <div class="bg-light p-30 mb-5">
+
+        <form asp-action="AdressCreate" asp-controller="Order" method="post">
+            <div class="row">
+                <input type="hidden" asp-for="@Model.UserId" />
+                <div class="col-md-6 form-group">
+                    <label>Adınız</label>
+                    <input class="form-control" type="text" asp-for="@Model.Name" placeholder="Adınız">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Soyadınız</label>
+                    <input class="form-control" type="text" asp-for="@Model.Surname" placeholder="Soyadınız">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>E-mail Adresiniz</label>
+                    <input class="form-control" type="text" asp-for="@Model.Email" placeholder="mail@email.com">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Telefon Numaranız</label>
+                    <input class="form-control" type="text" asp-for="@Model.Phone" placeholder="+90 123 456 78 90">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Adres Satırı 1</label>
+                    <input class="form-control" type="text" asp-for="@Model.Detail1" placeholder="456 Mahallesi">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Adres Satırı 2</label>
+                    <input class="form-control" type="text" asp-for="@Model.Detail2" placeholder="456 Sokak">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Ülke</label>
+                    <input class="form-control" type="text" asp-for="@Model.Country" placeholder="Türkiye">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Şehir</label>
+                    <input class="form-control" type="text" asp-for="@Model.City" placeholder="Şehriniz">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>İlçe</label>
+                    <input class="form-control" type="text" asp-for="@Model.District" placeholder="İlçeniz">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Posta Kodu</label>
+                    <input class="form-control" type="text" asp-for="@Model.ZipCode" placeholder="12345">
+                </div>
+                <button class="btn btn-block btn-primary font-weight-bold py-3">Adres Kaydet</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+

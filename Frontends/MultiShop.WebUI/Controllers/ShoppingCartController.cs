@@ -12,28 +12,29 @@ namespace MultiShop.WebUI.Controllers
         private readonly IProductReadApiService _productReadApiService;
         private readonly IDataProtector _dataProtector;
         private readonly IDataProtector _basketDataProtector;
+        private readonly IDataProtector _discountControllerProtect;
         private readonly IBasketReadApiService _basketReadApiService;
         private readonly IMapper _mapper;
         public ShoppingCartController(IBasketCommandApiService basketCommandApiService, IDataProtectionProvider dataProtection, IMapper mapper, IProductReadApiService productReadApiService, IBasketReadApiService basketReadApiService)
         {
             _basketCommandApiService = basketCommandApiService;
             _dataProtector = dataProtection.CreateProtector("FeatureProductDefaultViewComponent");
+            _discountControllerProtect = dataProtection.CreateProtector("DiscountController");
             _mapper = mapper;
             _productReadApiService = productReadApiService;
             _basketDataProtector = dataProtection.CreateProtector("ShoppingCartController");
             _basketReadApiService = basketReadApiService;
         }
 
-        public async Task<IActionResult> Index(int rate)
+        public async Task<IActionResult> Index(string rate)
         {
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v3 = "Ürünler";
             ViewBag.v2 = "Sepetim";
-
             var basketValue = await _basketReadApiService.GetBasketAsync();
-            basketValue.DiscountRate = rate;
-            var basketDiscountCalculateValue =_mapper.Map<BasketDiscountCalculateDto>(basketValue);
-            ViewBag.BasketDiscountCalculate= basketDiscountCalculateValue;
+            basketValue.DiscountRate = rate is not null ? int.Parse(_discountControllerProtect.Unprotect(rate)) : 0;
+            var basketDiscountCalculateValue = _mapper.Map<BasketDiscountCalculateDto>(basketValue);
+            ViewBag.BasketDiscountCalculate = basketDiscountCalculateValue;
             return View();
         }
 

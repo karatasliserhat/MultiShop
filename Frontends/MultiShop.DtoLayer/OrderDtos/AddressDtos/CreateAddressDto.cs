@@ -1,8 +1,6 @@
-﻿using MediatR;
-
-namespace MultiShop.Order.Application.Features.MediatR.Commands
+﻿namespace MultiShop.DtoLayer.OrderDtos
 {
-    public class CreateAddressCommand:IRequest
+    public class CreateAddressDto
     {
         public string UserId { get; set; }
         public string Name { get; set; }

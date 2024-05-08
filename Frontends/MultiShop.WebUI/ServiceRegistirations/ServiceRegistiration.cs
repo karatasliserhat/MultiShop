@@ -71,7 +71,6 @@ namespace MultiShop.WebUI.ServiceRegistirations
 
             Services.AddScoped(typeof(IApiReadService<>), typeof(ApiReadService<>));
 
-
             //Catalog Api
             Services.AddHttpClient<ICategoryReadApiService, CategoryReadApiService>(opt =>
             {
@@ -233,6 +232,41 @@ namespace MultiShop.WebUI.ServiceRegistirations
                 opt.BaseAddress = new Uri(apiData.DiscountApiUrl);
             }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
             //Discount Api End
+
+            //Order Api Start
+            Services.AddHttpClient<IOrderAddressReadApiService, IOrderAddressReadApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiData.OrderApiUrl);
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+            Services.AddHttpClient<IOrderAddressCommandApiService, OrderAddressCommandApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiData.OrderApiUrl);
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+
+            Services.AddHttpClient<IOrderDetailReadApiService, OrderDetailReadApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiData.OrderApiUrl);
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+            Services.AddHttpClient<IOrderDetailCommandApiService, OrderDetailCommandApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiData.OrderApiUrl);
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+
+            Services.AddHttpClient<IOrderingReadApiService, OrderingReadApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiData.OrderApiUrl);
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+            Services.AddHttpClient<IOrderingCommandApiService, OrderingCommandApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiData.OrderApiUrl);
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+            //Order Api End
         }
     }
 }
