@@ -1,0 +1,34 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+@await Component.InvokeAsync("_UserLayoutHeadComponentPartial")
+<body>
+    <div class="container-scroller d-flex">
+
+        @await Component.InvokeAsync("_UserLayoutSidebarComponentPartial")
+
+        <div class="container-fluid page-body-wrapper">
+
+            @await Component.InvokeAsync("_UserLayoutNavbarComponentPartial")
+
+            <div class="main-panel">
+                @RenderBody()
+                <footer class="footer">
+
+                    @await Component.InvokeAsync("_UserLayoutFooterComponentPartial")
+                </footer>
+            </div>
+
+        </div>
+
+    </div>
+    @await Component.InvokeAsync("_UserLayoutScriptComponentPartial")
+
+</body>
+
+</html>
