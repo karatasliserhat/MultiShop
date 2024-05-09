@@ -34,6 +34,7 @@ namespace MultiShop.WebUI.Controllers
             var basketValue = await _basketReadApiService.GetBasketAsync();
             basketValue.DiscountRate = rate is not null ? int.Parse(_discountControllerProtect.Unprotect(rate)) : 0;
             var basketDiscountCalculateValue = _mapper.Map<BasketDiscountCalculateDto>(basketValue);
+            basketDiscountCalculateValue.DataProtectRate = _basketDataProtector.Protect(basketDiscountCalculateValue.DiscountRate.ToString());
             ViewBag.BasketDiscountCalculate = basketDiscountCalculateValue;
             return View();
         }

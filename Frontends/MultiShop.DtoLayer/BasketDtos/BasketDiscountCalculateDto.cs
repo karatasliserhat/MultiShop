@@ -5,6 +5,7 @@
         const decimal tax = 10;
         const decimal percent = 100;
         public readonly decimal cargoPrice = 20;
+        public string DataProtectRate { get; set; }
         public int DiscountRate { get; set; }
         public List<BasketItemDto> BasketItems { get; set; }
         public decimal TotalPrice

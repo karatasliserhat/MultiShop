@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos;
 using MultiShop.DtoLayer.OrderDtos;
@@ -12,21 +13,24 @@ namespace MultiShop.WebUI.Controllers
         private readonly IOrderAddressCommandApiService _commandApiService;
         private readonly IBasketReadApiService _basketReadApiService;
         private readonly IMapper _mapper;
-        public OrderController(IOrderAddressCommandApiService commandApiService, IBasketReadApiService basketReadApiService, IMapper mapper)
+        private readonly IDataProtector _basketDataProtector;
+
+        public OrderController(IOrderAddressCommandApiService commandApiService, IBasketReadApiService basketReadApiService, IMapper mapper, IDataProtectionProvider dataProtection)
         {
             _commandApiService = commandApiService;
             _basketReadApiService = basketReadApiService;
             _mapper = mapper;
+            _basketDataProtector = dataProtection.CreateProtector("ShoppingCartController");
         }
 
-        public async Task<IActionResult> Index(int rate)
+        public async Task<IActionResult> Index(string rate)
         {
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v3 = "Siparişler";
-            ViewBag.v2 = "Sipariş Detayları";
+            ViewBag.v2 = "Sipariş İşlemleri";
 
             var basketValue = await _basketReadApiService.GetBasketAsync();
-            basketValue.DiscountRate = rate;
+            basketValue.DiscountRate = rate is not null ? int.Parse(_basketDataProtector.Unprotect(rate)) : 0;
             var basketDiscountCalculateValue = _mapper.Map<BasketDiscountCalculateDto>(basketValue);
             ViewBag.BasketDiscountCalculate = basketDiscountCalculateValue;
             return View();
