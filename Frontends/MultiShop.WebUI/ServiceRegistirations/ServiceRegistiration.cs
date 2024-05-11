@@ -13,17 +13,17 @@ namespace MultiShop.WebUI.ServiceRegistirations
     {
         public static void AddServiceRegistiration(this IServiceCollection Services, IConfiguration Configuration)
         {
-            Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCookie(JwtBearerDefaults.AuthenticationScheme, opt =>
-            {
-                opt.LoginPath = new PathString("/Login/Index");
-                opt.LogoutPath = new PathString("/Login/Logout");
-                opt.AccessDeniedPath = new PathString("/Pages/AccessDenied");
-                opt.Cookie.HttpOnly = true;
+            //Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCookie(JwtBearerDefaults.AuthenticationScheme, opt =>
+            //{
+            //    opt.LoginPath = new PathString("/Login/Index");
+            //    opt.LogoutPath = new PathString("/Login/Logout");
+            //    opt.AccessDeniedPath = new PathString("/Pages/AccessDenied");
+            //    opt.Cookie.HttpOnly = true;
 
-                opt.Cookie.SameSite = SameSiteMode.Strict;
-                opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
-                opt.Cookie.Name = "MultiShopJwt";
-            });
+            //    opt.Cookie.SameSite = SameSiteMode.Strict;
+            //    opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+            //    opt.Cookie.Name = "MultiShopJwt";
+            //});
 
             Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, opts =>
             {
@@ -37,7 +37,7 @@ namespace MultiShop.WebUI.ServiceRegistirations
             Services.AddHttpClient();
             Services.AddAccessTokenManagement();
             Services.AddHttpContextAccessor();
-            Services.AddScoped<ILoginService, LoginService>();
+            Services.AddScoped<IGetUserService, GetUserService>();
             Services.AddScoped<IAuthorizationTokenApiService, AuthorizationTokenApiService>();
 
             Services.AddAutoMapper(Assembly.GetExecutingAssembly());

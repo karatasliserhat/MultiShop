@@ -25,6 +25,7 @@ builder.Services.AddSwaggerGen();
 
 #region
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<IOrderOrderingRepository,OrderOrderingRepository>();
 builder.Services.AddApplicationService(builder.Configuration);
 #endregion
 

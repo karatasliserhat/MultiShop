@@ -7,12 +7,12 @@ namespace MultiShop.WebUI.Controllers
     public class LoginController : Controller
     {
         private readonly IIdentityCommandApiService _identityCommandApiService;
-        private readonly ILoginService _loginService;
+        private readonly IGetUserService _getUserService;
         private readonly IIdentitySignInService _identitySignInService;
-        public LoginController(IIdentityCommandApiService identityCommandApiService, ILoginService loginService, IIdentitySignInService identitySignInService)
+        public LoginController(IIdentityCommandApiService identityCommandApiService, IGetUserService getUserService, IIdentitySignInService identitySignInService)
         {
             _identityCommandApiService = identityCommandApiService;
-            _loginService = loginService;
+            _getUserService = getUserService;
             _identitySignInService = identitySignInService;
         }
         [HttpGet]

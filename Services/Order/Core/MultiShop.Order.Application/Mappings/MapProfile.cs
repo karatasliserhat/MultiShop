@@ -23,6 +23,7 @@ namespace MultiShop.Order.Application.Mappings
             CreateMap<Ordering, GetOrderingQueryResult>().ReverseMap();
             CreateMap<Ordering, CreateOrderingCommand>().ReverseMap();
             CreateMap<Ordering, UpdateOrderingCommand>().ReverseMap();
+            CreateMap<Ordering, GetOrderingByUserIdResult>().ReverseMap();
         }
     }
 }

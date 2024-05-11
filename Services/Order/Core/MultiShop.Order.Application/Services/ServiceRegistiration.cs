@@ -13,6 +13,7 @@ namespace MultiShop.Order.Application.Services
             });
 
             services.AddAutoMapper(typeof(ServiceRegistiration).Assembly);
+
         }
     }
 }

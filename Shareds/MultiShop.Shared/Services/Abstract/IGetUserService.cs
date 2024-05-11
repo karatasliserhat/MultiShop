@@ -1,6 +1,6 @@
 ﻿namespace MultiShop.Shared.Services.Abstract
 {
-    public interface ILoginService
+    public interface IGetUserService
     {
         public string GetUserId { get;}
     }

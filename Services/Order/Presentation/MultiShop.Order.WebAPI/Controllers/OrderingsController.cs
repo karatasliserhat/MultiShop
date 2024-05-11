@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Order.Application.Features.MediatR.Commands;
 using MultiShop.Order.Application.Features.MediatR.Queries;
+using MultiShop.Order.Application.Features.MediatR.Queries.OrderingQueries;
 
 namespace MultiShop.Order.WebAPI.Controllers
 {
@@ -28,6 +29,11 @@ namespace MultiShop.Order.WebAPI.Controllers
         public async Task<IActionResult> GetOrderingById(int id)
         {
             return Ok(await _mediatR.Send(new GetOrderingByIdQuery(id)));
+        }
+        [HttpGet("[Action]/{userId}")]
+        public async Task<IActionResult> GetOrderingByUserId(string userId)
+        {
+            return Ok(await _mediatR.Send(new GetOrderingByUserIdQuery(userId)));
         }
         [HttpPost]
         public async Task<IActionResult> CreateOrdering(CreateOrderingCommand createOrderingCommand)
