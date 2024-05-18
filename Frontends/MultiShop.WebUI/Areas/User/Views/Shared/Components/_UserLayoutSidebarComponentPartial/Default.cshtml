@@ -35,9 +35,15 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="pages/icons/mdi.html">
+            <a class="nav-link" asp-action="InBoxMessage" asp-controller="Message">
                 <i class="mdi mdi-emoticon menu-icon"></i>
-                <span class="menu-title">Mesajlarım</span>
+                <span class="menu-title">Gelen Mesajlarım</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-action="SenderBoxMessage" asp-controller="Message">
+                <i class="mdi mdi-emoticon menu-icon"></i>
+                <span class="menu-title">Giden Mesajlarım</span>
             </a>
         </li>
         <li class="nav-item">

@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
 using MultiShop.Shared.Handlers;
 using MultiShop.Shared.Services.Abstract;
@@ -267,6 +266,20 @@ namespace MultiShop.WebUI.ServiceRegistirations
             }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
             //Order Api End
+
+            //Message Api
+
+            Services.AddHttpClient<IMessageReadApiService, MessageReadApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiData.MessageApiUrl);
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+            Services.AddHttpClient<IMessageCommandApiService, MessageCommandApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiData.MessageApiUrl);
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+            //Message Api End
         }
     }
 }

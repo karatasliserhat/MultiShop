@@ -1,0 +1,56 @@
+﻿@model List<ResultInboxMessageDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/User/Views/UserLayout/Index.cshtml";
+
+    int count = 0;
+}
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Gelen Mesajlar</h4>
+                <div class="bs-example" data-example-id="bordered-table">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Gönderen</th>
+                                <th>Konu</th>
+                                <th>Tarih</th>
+                                <th>Durum</th>
+                                <th>Sil</th>
+                                <th>Mesajı Aç</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model is { Count: > 0 })
+                            {
+                                @foreach (var item in Model)
+                                {
+                                    count++;
+                                    <tr>
+                                        <th scope="row">@count</th>
+                                        <td>@item.SenderId</td>
+                                        <td>@item.Subject</td>
+                                        <td>@item.MessageDate.ToShortDateString()</td>
+                                        <td>@(item.IsRead==false?"Okunmadı":"Okundu")</td>
+                                        <td><a asp-action="DeleteMessage" asp-controller="Message" asp-route-messageId="@item.DataProtect" class="btn btn-outline-danger">Sil</a></td>
+                                        <td><a asp-action="ReadMessage" asp-controller="Message" asp-route-messageId="@item.DataProtect" class="btn btn-outline-danger">Oku</a></td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr class="table-warning">
+                                    <td colspan="7">Gelen Mesajınız Yok</td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

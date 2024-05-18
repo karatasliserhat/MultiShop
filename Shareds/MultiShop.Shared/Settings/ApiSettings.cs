@@ -10,6 +10,8 @@
         public string BasketApiUrl { get; set; }
         public string PaymentApiUrl { get; set; }
         public string ImageApiUrl { get; set; }
+        public string MessageApiUrl { get; set; }
+
         public string IdentityApiUrl { get; set; }
     }
 }

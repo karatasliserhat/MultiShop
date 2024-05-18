@@ -1,0 +1,52 @@
+﻿@model List<ResultSendboxMessageDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/User/Views/UserLayout/Index.cshtml";
+
+    int count = 0;
+}
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Giden Mesajlar</h4>
+                <div class="bs-example" data-example-id="bordered-table">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Alıcı</th>
+                                <th>Konu</th>
+                                <th>Mesaj</th>
+                                <th>Tarih</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model is { Count: > 0 })
+                            {
+                                @foreach (var item in Model)
+                                {
+                                    count++;
+                                    <tr>
+                                        <th scope="row">@count</th>
+                                        <td>@item.ReceiverId</td>
+                                        <td>@item.Subject</td>
+                                        <td>@item.MessageDetail</td>
+                                        <td>@item.MessageDate.ToShortDateString()</td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr class="table-warning">
+                                    <td colspan="6">Giden Mesajınız Yok</td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

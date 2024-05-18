@@ -8,3 +8,4 @@ Basket MicroService   => http://localhost:7074
 Comment MicroService  => http://localhost:7075
 Payment MicroService  => http://localhost:7076
 Image MicroService    => http://localhost:7077
+Message MicroService  => http://localhost:7078
