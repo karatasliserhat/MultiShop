@@ -9,6 +9,7 @@ namespace MultiShop.IdentityServer.Mappings
         public MapProfile()
         {
             CreateMap<ApplicationUser, UserRegisterDto>().ReverseMap();
+            CreateMap<ApplicationUser,ResultUserDto>().ReverseMap();
         }
     }
 }

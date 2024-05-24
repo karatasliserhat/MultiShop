@@ -1,0 +1,56 @@
+﻿@model List<ResultUserDto>
+@{
+    ViewData["Title"] = "User";
+    Layout = "~/Areas/Admin/Views/AdminLayout/_AdminLayout.cshtml";
+
+    int count = 0;
+}
+
+<div class="col-md-12">
+    <div class="chart-box">
+        <h4>Kullanıcı Tablosu</h4>
+        <p>Kullanıcılar ile ilgili işlemlerinizi aşağıdaki tablo üzerinden gerçekleştirebilsiniz.</p>
+        <div class="bs-example" data-example-id="bordered-table">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Ad Soyad</th>
+                        <th>Kullanıcı Adı</th>
+                        <th>Eposta</th>
+                        <th>Adres Detayı</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model is not null)
+                    {
+
+                        foreach (var item in Model)
+                        {
+                            count++;
+                            <tr>
+                                <th scope="row">@count</th>
+                                <td>@item.FullName</td>
+                                <td>@item.UserName</td>
+                                <td>@item.Email</td>
+                                <td><a asp-action="#" asp-controller="#" asp-route-id="@item.DataProtect" class="btn btn-outline-primary">Adres Detayına Git</a></td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+
+
+                        <tr>
+                            <td class="alert alert-warning" colspan="5">Kayıt Yok</td>
+                        </tr>
+
+                    }
+                </tbody>
+
+
+
+            </table>
+        </div>
+    </div>
+</div>

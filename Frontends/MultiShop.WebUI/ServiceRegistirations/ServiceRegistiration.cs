@@ -197,7 +197,7 @@ namespace MultiShop.WebUI.ServiceRegistirations
             Services.AddHttpClient<IIdentityReadApiService, IdentityReadApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.IdentityApiUrl.ToString());
-            });
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
             Services.AddHttpClient<IIdentityCommandApiService, IdentityCommandApiService>(opt =>
             {
                 opt.BaseAddress = new Uri(apiData.IdentityApiUrl.ToString());
