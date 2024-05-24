@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MultiShop.DtoLayer.CargoDtos;
 using MultiShop.DtoLayer.CatalogDtos;
 using MultiShop.DtoLayer.CommentDtos;
 
@@ -39,6 +40,8 @@ namespace MultiShop.WebUI.Mappings
                 .ForMember(x => x.ProductImageUrl, x => x.MapFrom(x => x.ImageUrl)).ReverseMap();
 
             CreateMap<BasketTotalDto, BasketDiscountCalculateDto>().ReverseMap();
+
+            CreateMap<ResultCargoCompanyDto, UpdateCargoCompanyDto>().ReverseMap();
         }
     }
 }

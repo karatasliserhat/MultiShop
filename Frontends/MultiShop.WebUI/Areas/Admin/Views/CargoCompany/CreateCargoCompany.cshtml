@@ -1,0 +1,21 @@
+﻿@model CreateCargoCompanyDto
+@{
+    ViewData["Title"] = "CreateCargoCompany";
+    Layout = "~/Areas/Admin/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="chart-box">
+
+        <div class="bs-example" data-example-id="bordered-table">
+
+            <form asp-controller="CargoCompany" asp-action="CreateCargoCompany" method="post">
+                <label class="form-label">Kategori Şirketi Adı</label>
+                <input type="text" asp-for="@Model.Name" class="form-control" />
+                <br />
+                <input type="submit" value="Kargo Şirketi Ekle" class="btn btn-info" />
+            </form>
+
+        </div>
+    </div>
+</div>

@@ -280,6 +280,19 @@ namespace MultiShop.WebUI.ServiceRegistirations
             }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
             //Message Api End
+
+            //Cargo Api start
+
+            Services.AddHttpClient<ICargoCompanyReadApiService, CargoCompanyReadApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiData.CargoApiUrl);
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+            Services.AddHttpClient<ICargoCompanyCommandApiService, CargoCompanyCommandApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiData.CargoApiUrl);
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+            //Cargo Api end
         }
     }
 }
