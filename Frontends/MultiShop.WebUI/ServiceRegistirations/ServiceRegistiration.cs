@@ -292,6 +292,11 @@ namespace MultiShop.WebUI.ServiceRegistirations
             {
                 opt.BaseAddress = new Uri(apiData.CargoApiUrl);
             }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+            Services.AddHttpClient<ICargoCustomerReadApiService, CargoCustomerReadApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(apiData.CargoApiUrl);
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
             //Cargo Api end
         }
     }

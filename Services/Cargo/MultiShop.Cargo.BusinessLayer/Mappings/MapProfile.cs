@@ -22,6 +22,7 @@ namespace MultiShop.Cargo.BusinessLayer.Mappings
             CreateMap<CargoCustomer, CreateCargoCustomerDto>().ReverseMap();
             CreateMap<CargoCustomer, UpdateCargoCustomerDto>().ReverseMap();
             CreateMap<CargoCustomer, ResultCargoCustomerDto>().ReverseMap();
+            CreateMap<CargoCustomer, GetCargoCustomerWithUserIdDto>().ReverseMap();
 
             CreateMap<CargoOperation, GetCargoOperationDto>().ReverseMap();
             CreateMap<CargoOperation, CreateCargoOperationDto>().ReverseMap();

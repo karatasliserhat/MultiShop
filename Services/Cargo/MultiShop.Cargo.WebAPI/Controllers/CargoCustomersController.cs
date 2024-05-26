@@ -36,6 +36,17 @@ namespace MultiShop.Cargo.WebAPI.Controllers
         {
             return Ok(_mapper.Map<GetCargoCustomerDto>(await _CargoCustomerService.GetByIdAsync(id)));
         }
+        [HttpGet("[Action]/{userId}")]
+        public async Task<IActionResult> GetCargoCustomerWithUserId(string userId)
+        {
+            var result = _mapper.Map<GetCargoCustomerWithUserIdDto>(await _CargoCustomerService.GetCarCustomerWithUserIdAsync(userId, new CancellationToken()));
+            if (result is { Address: not null, City: not null })
+            {
+                return Ok(result);
+
+            }
+            return Ok(new GetCargoCustomerWithUserIdDto());
+        }
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCargoCustomer(int id)
         {
