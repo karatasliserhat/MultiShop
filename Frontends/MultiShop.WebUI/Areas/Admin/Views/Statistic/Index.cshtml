@@ -1,0 +1,126 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/_AdminLayout.cshtml";
+}
+<div class="col-md-12">
+    <div class="chart-box">
+        <div class="row">
+            <div class="col-lg-3 col-xs-6">
+                <div class="media-box">
+                    <div class="media-icon pull-left"><i class="icon-bargraph"></i> </div>
+                    <div class="media-info">
+                        <h5>Toplam Marka</h5>
+                        <h3>@ViewBag.BrandCount</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <div class="media-box bg-sea">
+                    <div class="media-icon pull-left"><i class="icon-wallet"></i> </div>
+                    <div class="media-info">
+                        <h5>Toplam Ürün</h5>
+                        <h3>@ViewBag.ProductCount</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <div class="media-box bg-blue">
+                    <div class="media-icon pull-left"><i class="icon-basket"></i> </div>
+                    <div class="media-info">
+                        <h5>Toplam Kategori</h5>
+                        <h3>@ViewBag.CategoryCount</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <div class="media-box bg-green">
+                    <div class="media-icon pull-left"><i class="icon-layers"></i> </div>
+                    <div class="media-info">
+                        <h5>Ortalama Ürün Fiyatı</h5>
+                        <h3>@ViewBag.AvgProductPrice ₺</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3 col-xs-6">
+                <div class="media-box">
+                    <div class="media-icon pull-left"><i class="icon-bargraph"></i> </div>
+                    <div class="media-info">
+                        <h7>En Pahalı Ürün</h7>
+                        <h3>@ViewBag.MaxProductName</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <div class="media-box bg-sea">
+                    <div class="media-icon pull-left"><i class="icon-wallet"></i> </div>
+                    <div class="media-info">
+                        <h6>En Ucuz Ürün</h6>
+                        <h3>@ViewBag.MinProductName</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <div class="media-box bg-blue">
+                    <div class="media-icon pull-left"><i class="icon-basket"></i> </div>
+                    <div class="media-info">
+                        <h5>Toplam Kullanıcı</h5>
+                        <h3>@ViewBag.UserCount</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <div class="media-box bg-green">
+                    <div class="media-icon pull-left"><i class="icon-layers"></i> </div>
+                    <div class="media-info">
+                        <h5>Toplam Yorum</h5>
+                        <h3>@ViewBag.CommentTotalCount</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3 col-xs-6">
+                <div class="media-box">
+                    <div class="media-icon pull-left"><i class="icon-bargraph"></i> </div>
+                    <div class="media-info">
+                        <h5>Aktif Yorum</h5>
+                        <h3>@ViewBag.CommentActiveCount</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <div class="media-box bg-sea">
+                    <div class="media-icon pull-left"><i class="icon-wallet"></i> </div>
+                    <div class="media-info">
+                        <h5>Pasif Yorum</h5>
+                        <h3>@ViewBag.CommentPassiveCount</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <div class="media-box bg-blue">
+                    <div class="media-icon pull-left"><i class="icon-basket"></i> </div>
+                    <div class="media-info">
+                        <h5>İndirim Kupon Sayısı</h5>
+                        <h3>@ViewBag.DiscountCount</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <div class="media-box bg-green">
+                    <div class="media-icon pull-left"><i class="icon-layers"></i> </div>
+                    <div class="media-info">
+                        <h5>Toplam Mesaj Sayısı</h5>
+                        <h3>@ViewBag.MessageCount</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+       

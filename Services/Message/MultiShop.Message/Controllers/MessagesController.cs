@@ -25,6 +25,11 @@ namespace MultiShop.Message.Controllers
         {
             return Ok(await _messageService.GetByIdMessageAsync(MessageId));
         }
+        [HttpGet("[Action]")]
+        public async Task<IActionResult> GetMessageCount()
+        {
+            return Ok(await _messageService.GetMessageCountAsync());
+        }
         [HttpGet("[Action]/{ReceiverId}")]
         public async Task<IActionResult> GetReceiverAllMessage(string ReceiverId)
         {

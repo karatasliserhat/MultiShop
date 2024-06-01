@@ -38,5 +38,10 @@ namespace MultiShop.IdentityServer.Controllers
         {
             return Ok(_mapper.Map<List<ResultUserDto>>(await _userManager.Users.ToListAsync()));
         }
+        [HttpGet("[Action]")]
+        public async Task<IActionResult> GetUserCount()
+        {
+            return Ok(await _userManager.Users.CountAsync());
+        }
     }
 }

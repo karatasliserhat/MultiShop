@@ -35,6 +35,11 @@ namespace MultiShop.Message.Services
             return _mapper.Map<GetByIdMessageAsync>(await _context.UserMessages.FirstOrDefaultAsync(x => x.UserMessageId == messageId));
         }
 
+        public async Task<int> GetMessageCountAsync()
+        {
+            return await _context.UserMessages.CountAsync();
+        }
+
         public async Task<bool> IsReadMessageAsync(int messageId)
         {
             await _context.UserMessages.Where(x => x.UserMessageId == messageId).ExecuteUpdateAsync(x => x.SetProperty(x => x.IsRead, true));

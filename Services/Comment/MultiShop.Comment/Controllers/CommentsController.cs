@@ -42,6 +42,7 @@ namespace MultiShop.Comment.Controllers
 
             return Ok(_mapper.Map<GetByIdCommentDto>(await _context.UserComments.FirstAsync(x => x.UserCommentId == id)));
         }
+
         [HttpGet("[Action]/{productId}")]
         public async Task<IActionResult> GetCommentByProductId(string productId)
         {
@@ -49,6 +50,21 @@ namespace MultiShop.Comment.Controllers
             return Ok(_mapper.Map<List<ResultCommentDto>>(await _context.UserComments.AsNoTracking().
                 Where(x => x.ProductId == productId).
                 ToListAsync()));
+        }
+        [HttpGet("[Action]")]
+        public async Task<IActionResult> GetActiveCommentCount()
+        {
+            return Ok(await _context.UserComments.Where(x => x.Status == true).CountAsync());
+        }
+        [HttpGet("[Action]")]
+        public async Task<IActionResult> GetPassiveCommentCount()
+        {
+            return Ok(await _context.UserComments.Where(x => x.Status == false).CountAsync());
+        }
+        [HttpGet("[Action]")]
+        public async Task<IActionResult> GetTotalCommentCount()
+        {
+            return Ok(await _context.UserComments.CountAsync());
         }
         [HttpPut]
         public async Task<IActionResult> UpdateComment(UpdateCommentDto updateCommentDto)

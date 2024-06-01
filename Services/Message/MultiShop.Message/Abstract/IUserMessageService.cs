@@ -12,5 +12,6 @@ namespace MultiShop.Message.Abstract
         Task<GetByIdMessageAsync> GetByIdMessageAsync(int messageId);
         Task<bool> IsReadMessageAsync(int messageId);
         Task DeleteAsync(int messageId);
+        Task<int> GetMessageCountAsync();
     }
 }

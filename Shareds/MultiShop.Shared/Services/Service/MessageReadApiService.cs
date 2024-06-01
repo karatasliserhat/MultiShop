@@ -35,5 +35,10 @@ namespace MultiShop.Shared.Services.Service
             await _client.GetAsync($"messages/IsReadMessage/{MessageId}");
 
         }
+
+        public async Task<int> GetMessageCount()
+        {
+            return await _client.GetFromJsonAsync<int>("Messages/GetMessageCount");
+        }
     }
 }

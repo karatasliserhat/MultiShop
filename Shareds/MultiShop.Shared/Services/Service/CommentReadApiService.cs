@@ -12,9 +12,25 @@ namespace MultiShop.Shared.Services.Service
             _client = client;
         }
 
+        public async Task<int> GetActiveCommentCount()
+        {
+            return await _client.GetFromJsonAsync<int>("Comments/GetActiveCommentCount");
+        }
+
         public async Task<List<ResultCommentDto>> GetCommentByProductIdAsync(string productId)
         {
             return await _client.GetFromJsonAsync<List<ResultCommentDto>>($"Comments/GetCommentByProductId/{productId}");
+        }
+
+        public async Task<int> GetPassiveCommentCount()
+        {
+            return await _client.GetFromJsonAsync<int>("Comments/GetPassiveCommentCount");
+        }
+
+        public async Task<int> GetTotalCommentCount()
+        {
+            return await _client.GetFromJsonAsync<int>("Comments/GetTotalCommentCount");
+
         }
     }
 }

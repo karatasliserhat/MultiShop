@@ -9,5 +9,9 @@ namespace MultiShop.Shared.Services.Abstract
         Task<ResultProductWithCategoryWithImagesWithDetailDto> GetResultProductWithCategoryWithImagesWithDetailByProductIdAsync(string productId);
         Task<GetProductWithProductDetailDto> GetResultProductWithDetailByProductIdAsync(string productId);
         Task<GetProductWithProductImagesDto> GetResultProductWithImagesByProductIdAsync(string productId);
+        Task<int> GetProductCount();
+        Task<string> GetMaxPriceProductName();
+        Task<string> GetMinPriceProductName();
+        Task<decimal> GetProductAvgPrice();
     }
 }

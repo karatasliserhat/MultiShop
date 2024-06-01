@@ -37,5 +37,25 @@ namespace MultiShop.Shared.Services.Service
         {
             return await _client.GetFromJsonAsync<GetProductWithProductImagesDto>($"Products/GetProductWithImagesByProductId/{productId}");
         }
+
+        public async Task<int> GetProductCount()
+        {
+            return await _client.GetFromJsonAsync<int>("Statistics/GetProductCount");
+        }
+
+        public async Task<string> GetMaxPriceProductName()
+        {
+            return await _client.GetStringAsync("Statistics/GetMaxPriceProductName");
+        }
+
+        public async Task<string> GetMinPriceProductName()
+        {
+            return await _client.GetStringAsync("Statistics/GetMinPriceProductName");
+        }
+
+        public async Task<decimal> GetProductAvgPrice()
+        {
+            return await _client.GetFromJsonAsync<decimal>("Statistics/GetProductAvgPrice");
+        }
     }
 }

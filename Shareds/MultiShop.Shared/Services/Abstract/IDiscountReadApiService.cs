@@ -6,5 +6,6 @@ namespace MultiShop.Shared.Services.Abstract
     {
         Task<GetByCodeCouponRateDto> GetDiscountCouponRateWihtCodeAsync(string code);
         Task<ResultCouponDto> GetDiscountCouponDetailWihtCodeAsync(string code);
+        Task<int> GetDiscountCount();
     }
 }

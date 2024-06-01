@@ -13,10 +13,15 @@ namespace MultiShop.Shared.Services.Service
             _client = client;
         }
 
+        public async Task<int> GetUserCount()
+        {
+            return await _client.GetFromJsonAsync<int>("Users/GetUserCount");
+        }
+
         public async Task<List<ResultUserDto>> GetUserListAsync()
         {
             var result = await _client.GetFromJsonAsync<List<ResultUserDto>>("Users/GetUserAll");
-            if(result is { Count: > 0 })
+            if (result is { Count: > 0 })
             {
                 return result;
             }
