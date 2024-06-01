@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Kategoriler";
+    Layout = "~/Areas/Admin/Views/AdminLayout/_AdminLayout.cshtml";
+}
+<script src="~/microsoft/signalr/dist/browser/signalr.min.js"></script>
+<script src="~/js/jquery/jquery.min.js"></script>
+
+<div class="context">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                @*<script type="text/javascript">
+                    $(document).ready(() => {
+
+                        var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7112/MyHub").build();
+
+                        $("#conStatus").text(connection.state);
+                        connection.start().then(() => {
+                            $("#conStatus").text(connection.state);
+
+                            setInterval(() => {
+                                connection.invoke("SendStatistic");
+                            }, 1000)
+
+                        }).catch((err) => {
+                            console.log(err);
+                        });
+
+                        connection.on("ReceiveInboxMessageCount", (value) => {
+                            $("#messageCount").text(value);
+                        });
+                        connection.on("ReceiveCommentCount", (value) => {
+                            $("#commentCount").text(value);
+                        });
+
+                    })
+                </script>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <div class="alert alert-success">
+
+            Bağlantının Durumu:<strong id="conStatus"></strong>
+            <br />
+            Gelen Mesaj Sayısı:<strong id="messageCount"></strong>
+            <br />
+            Toplam Yorum Sayısı:<strong id="commentCount"></strong>
+        </div>
+
+    </div>
+</div>

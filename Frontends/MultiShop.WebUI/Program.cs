@@ -1,4 +1,5 @@
 using MultiShop.WebUI.ServiceRegistirations;
+using MultiShop.WebUI.SignalRHub;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.MapHub<MyHub>("/myhub");
 app.UseAuthentication();
 app.UseAuthorization();
 

@@ -39,6 +39,9 @@ namespace MultiShop.WebUI.ServiceRegistirations
             Services.AddScoped<IGetUserService, GetUserService>();
             Services.AddScoped<IAuthorizationTokenApiService, AuthorizationTokenApiService>();
 
+
+            Services.AddSignalR();
+
             Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             Services.Configure<ApiSettings>(Configuration.GetSection(nameof(ApiSettings)));
