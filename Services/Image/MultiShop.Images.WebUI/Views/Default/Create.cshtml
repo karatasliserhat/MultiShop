@@ -1,0 +1,22 @@
+﻿@model MultiShop.Images.WebUI.Dal.Entities.ImageDrive
+
+<h1>Fotoğraf Ekleme</h1>
+
+<div class="container">
+    <div class="row">
+        <form method="post" enctype="multipart/form-data">
+            <label>Fotoğraf ekleme</label>
+            <input type="text" class="form-control border" asp-for="@Model.Name" />
+            <br />
+            <label>Hakem Fotosu</label>
+            <input type="file" class="form-control border" asp-for="@Model.Photo" />
+            <br />
+
+            <input asp-for="@Model.SavedUrl" type="hidden" class="form-control" />
+            <input asp-for="@Model.SavedFileName" type="hidden" class="form-control" />
+            <button class="btn btn-outline-info">Hakemi Kaydet</button>
+            <a href="/Admin/Referee" class="btn btn-outline-danger">Geri Dön</a>
+
+        </form>
+    </div>
+</div>

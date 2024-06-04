@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "netcoremicroserviceimageproje",
+  "private_key_id": "b592c70077966a1108f55641e4563dd6a245fb38",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCzxCXCaptEJ3IE\nwxHx4BFxxfL9ur2sQ6dnchYs7ZQnqZPoy6PIy52frVTJ7FXFhX4IviVPbumLmmE/\n94YkqTIPbibB/WGLe+gH4aYJqq31/0I9MoDizwbmZyK9GjMpu0cQmLS6YSPA0zF+\ntDsGWq12e0pOxIet9w3Pz+09XWDeg7lO2c7d9xI4MBOFzhAH99zrz4aPXS4qJwVU\nDkZz0AaW6kqzxFfM5obeJ+Wk6xJ56ZQSvFfJ3CIsvK2FO7DI9mDk5W/3C/C31sUA\nSHGMcXC+52B8SXEXY5pcAEDSUoPPrfCkBDKERrHQOa3CD7y5pPi7AbwU8Kww7dfF\n1hHLqCJnAgMBAAECggEACVi/+9lOJF+Gqp+33aMgVRGNPksI1J2Z5SOF6qUZqGxF\nP/vikqyfj+9TssICfaggsvSr/PLP2s3Wk5xbkalobGv2QOzbNwTkvhAp8WO58sno\nWEU5dVF9Utp28G0dzuQpYEAIWY52bO6uKp/VV9G8JiZn6SuHwHBRfAYcGC40PK13\nRCU6YNtxawBkawbpHhX1QtS557IJD/qY2ZIjOjzFB+Z7h1WIy0Ttv5YEucepnZb3\njCDjIU+BR/NlQhA54i1dA/gCjGYree7KtEDbt6EQ1QbzlDE5WJSkOUqeED+QxI2x\nEa3UqMbkTQY//M1GM7k/hGWCLkUB8oqEF8nhiehfKQKBgQDng/53E9XY8dFS86+G\nESv7Kn/vmkTp01OoAbQ9aLO6InwED5BoPRGjCKdmHJA6CHwRODwHD3OFb794Hcnc\ndD27sEpm+a2Q34pXCyI4lUCXtifetqDMpew4EkK2OkDlgR774QK7reMP1NL/Pcvn\nrZLZngWqIcIhniKoAGNfX8FyTwKBgQDGxxnPdnM+RmwEt+JZqCGdZ3VS7z0/kUN4\nDgX7V4QuWmXUT02VHzwnEqLrzsvPEhVpraeM7b+t3u8Rm8XTsxn/TAszVNbaJW9t\n125sURklzvP55EA2BOgg+AzZrT7OkWNfV1ETK+tFbh5Lax1nXB+zoZWW1Mc5NKkb\nFo0UetvAaQKBgFQq5o5ABdTTRTiVI1DoWUb80no3aapgi99ejzpsIDshYljPl75t\nxUWyVbmH1N9kSkawXRJsCaGPWNrAaazeDbt4gfQh/XnX6yFuCMjtagg9zwzm9Fqy\nT8iqytoZH5LQeIU17ppww0X0J6lnvAPEVMkM7B5IG53BMfRF/9qio199AoGAQFo6\n5+hgHNwtokVp2T7OSygwWn4rZQYBQr+/fgRyPZN0fgyCgHGRRtEIv7C+WLZxCjp3\nEO/zazXOTfQRUp0cIIOc6KxhtlQCRBxHmneS3aOnZtJXW2WxROMpPduRhsyY0Efz\nbnJ8g4jH9ACkj07K0JvSUvdl3AZJbQSa/fNca2kCgYEA2jUkXS9fWY+c4gH5PE/X\nrH1+scrH843L43MkErsppq/WUUIU0UWijEmGtQBpxIasAEqr8gQ/S67nN8HnqGjv\nYxT/YSJrKsjp8yCv9mn+EzQRphKOuDTq4IMN3qmo5jbLzKXc0RBJGC/Z0Aou2dmv\npDydTAmOtw9/6VLlAj98raw=\n-----END PRIVATE KEY-----\n",
+  "client_email": "mywebproje@netcoremicroserviceimageproje.iam.gserviceaccount.com",
+  "client_id": "103855022807580704042",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/mywebproje%40netcoremicroserviceimageproje.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

@@ -90,7 +90,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requirements", "Requirement
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Message", "Message", "{DEA458D8-C363-4D61-A8CD-116788F76C7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.Message", "Services\Message\MultiShop.Message\MultiShop.Message.csproj", "{052B2C82-D333-4377-B589-5BFFD7D0532B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Message", "Services\Message\MultiShop.Message\MultiShop.Message.csproj", "{052B2C82-D333-4377-B589-5BFFD7D0532B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.Images.WebUI", "Services\Image\MultiShop.Images.WebUI\MultiShop.Images.WebUI.csproj", "{A7D1F01B-754D-4C2B-8EC9-84155D876479}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -182,6 +184,10 @@ Global
 		{052B2C82-D333-4377-B589-5BFFD7D0532B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{052B2C82-D333-4377-B589-5BFFD7D0532B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{052B2C82-D333-4377-B589-5BFFD7D0532B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7D1F01B-754D-4C2B-8EC9-84155D876479}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7D1F01B-754D-4C2B-8EC9-84155D876479}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7D1F01B-754D-4C2B-8EC9-84155D876479}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7D1F01B-754D-4C2B-8EC9-84155D876479}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -221,6 +227,7 @@ Global
 		{C0DEA0C5-ABF2-471C-89D6-10D99C58DECE} = {63C52545-677C-4E3B-920F-66DA5DA938A4}
 		{DEA458D8-C363-4D61-A8CD-116788F76C7F} = {8534E6A7-8CAB-41A9-BD19-1F8DCEB326C4}
 		{052B2C82-D333-4377-B589-5BFFD7D0532B} = {DEA458D8-C363-4D61-A8CD-116788F76C7F}
+		{A7D1F01B-754D-4C2B-8EC9-84155D876479} = {63C52545-677C-4E3B-920F-66DA5DA938A4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DCE76410-E3AD-4E9B-9082-4C2DA894B851}
