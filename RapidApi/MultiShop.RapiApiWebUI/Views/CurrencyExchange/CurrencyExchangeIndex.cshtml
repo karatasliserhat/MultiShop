@@ -1,0 +1,34 @@
+﻿@model CurrencyExchangeViewModel
+@{
+    ViewData["Title"] = "CurrencyExchange";
+}
+
+<div class="container">
+    <br />
+    <form action="CurrencyExchangeIndex" method="post">
+
+        <div class="form-control">
+            <input type="text" class="form-control" name="fromSymbol" value="" />
+            <label class="form-control">Dönüşüm Olacak</label>
+        </div>
+        <div class="form-control">
+            <input type="text" class="form-control" name="toSymbol" value="" />
+            <label class="form-control">Dönüşüm Yapılacak</label>
+        </div>
+
+        <input type="submit" class="btn btn-outline-primary" value="Sorgula" />
+    </form>
+    <br /><br />
+    @if (Model.data is not null)
+    {
+        <div class="container">
+            <h3 class="alert alert-warning">Dönüşümü Olan:@Model.data.from_symbol</h3>
+            <br />
+            <h3 class="alert alert-warning">Dönüşümü Yapılan:@Model.data.to_symbol</h3>
+            <br />
+            <h3 class="alert alert-warning">Değişim Oranı:@Model.data.exchange_rate</h3>
+
+        </div>
+    }
+
+</div>

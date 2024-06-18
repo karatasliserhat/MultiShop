@@ -1,0 +1,52 @@
+﻿@model List<ProductSearchViewModel.Datum>
+@{
+    ViewData["Title"] = "CurrencyExchange";
+    int count = 0;
+}
+
+<div class="container">
+    <br />
+    <form action="Index" method="post">
+
+        <div class="form-control">
+            <label class="form-control">Aranacak Ürün</label>
+            <input type="text" class="form-control" name="searchProduct" value="" />
+        </div>
+        <br />
+
+        <input type="submit" class="btn btn-outline-primary" value="Sorgula" />
+    </form>
+    <br /><br />
+    @if (Model.Count > 0)
+    {
+
+        <div class="container">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Ürün Başlığı</th>
+                        <th>Ürün Puanı</th>
+                        <th>Ürün Fiyatı</th>
+                        <th>Ürün Detayları</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        count++;
+                        <tr>
+                            <td>@count</td>
+                            <td>@Model[i].product_title</td>
+                            <td>@Model[i].product_rating</td>
+                            <td>@Model[i].typical_price_range.GetValue(0)</td>
+                            <td><a href="@Model[i].product_page_url" class="btn btn-outline-info">Ürün Detayları</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    }
+
+</div>

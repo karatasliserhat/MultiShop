@@ -1,0 +1,12 @@
+﻿@model WeatherViewModel.Rootobject
+@{
+    ViewData["Title"] = "WeatherDetail";
+}
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<h1> Hava Durumu</h1>
+<br />
+<div class="container">
+    <br /><br />
+    <h3 class="alert alert bg-success">@Model.data.city Durumu Güncel:@Model.data.temp</h3>
+</div>
+
