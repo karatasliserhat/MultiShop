@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Options;
 using MultiShop.WebUI.ServiceRegistirations;
 using MultiShop.WebUI.SignalRHub;
 
@@ -26,6 +27,10 @@ app.UseRouting();
 app.MapHub<MyHub>("/myhub");
 app.UseAuthentication();
 app.UseAuthorization();
+
+var options = app.Services.GetService<IOptions<RequestLocalizationOptions>>();
+if (options is not null)
+    app.UseRequestLocalization(options.Value);
 
 app.MapControllerRoute(
     name: "default",

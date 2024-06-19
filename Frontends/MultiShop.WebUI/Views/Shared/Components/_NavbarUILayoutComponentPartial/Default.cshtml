@@ -1,4 +1,8 @@
-﻿<div class="container-fluid bg-dark mb-30">
+﻿@using MultiShop.WebUI.LocalizationServices
+@inject LocalizationService Localizer
+
+
+<div class="container-fluid bg-dark mb-30">
     <div class="row px-xl-5">
         @await Component.InvokeAsync("_CategoriesNavbarUILayoutComponentPartial")
         <div class="col-lg-9">
@@ -12,12 +16,12 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
-                        <a asp-controller="Default" asp-action="Index" class="nav-item nav-link">Anasayfa</a>
-                        <a asp-controller="ProductList" asp-action="Index" class="nav-item nav-link">Ürünler</a>
-                        <a href="detail.html" class="nav-item nav-link">Ürün Detayları</a>
-                        <a href="detail.html" class="nav-item nav-link">Günün Fırsatı</a>
+                        <a asp-controller="Default" asp-action="Index" class="nav-item nav-link">@Localizer.GetLocalizedHtmlString("Anasayfa")</a>
+                        <a asp-controller="ProductList" asp-action="Index" class="nav-item nav-link">@Localizer.GetLocalizedHtmlString("Ürünler")</a>
+                        <a href="detail.html" class="nav-item nav-link">@Localizer.GetLocalizedHtmlString("Ürün Detayları")</a>
+                        <a href="detail.html" class="nav-item nav-link">@Localizer.GetLocalizedHtmlString("Günün Fırsatı")</a>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sayfalar <i class="fa fa-angle-down mt-1"></i></a>
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@Localizer.GetLocalizedHtmlString("Sayfalar") <i class="fa fa-angle-down mt-1"></i></a>
                             <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
                                 @if (User.Identity.IsAuthenticated)
                                 {
@@ -26,13 +30,14 @@
                                 }
                                 else
                                 {
-                                    <a asp-controller="Register" asp-action="Index" class="dropdown-item">Kayıt Ol</a>
-                                    <a asp-controller="Login" asp-action="Index" class="dropdown-item">Giriş Yap</a>
+                            <a asp-controller="Register" asp-action="Index" class="dropdown-item">@Localizer.GetLocalizedHtmlString("Kayıt Ol")</a>
+                            <a asp-controller="Login" asp-action="Index" class="dropdown-item">@Localizer.GetLocalizedHtmlString("Giriş Yap")</a>
                                 }
 
                             </div>
                         </div>
-                        <a asp-controller="Contact" asp-action="Index" class="nav-item nav-link">İletişim</a>
+                        <a asp-controller="Contact" asp-action="Index" class="nav-item nav-link">@Localizer.GetLocalizedHtmlString("İletişim")</a>
+                           
                     </div>
                     <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
                         <a href="" class="btn px-0">

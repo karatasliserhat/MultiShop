@@ -1,9 +1,14 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Options;
 using MultiShop.Shared.Handlers;
 using MultiShop.Shared.Services.Abstract;
 using MultiShop.Shared.Services.Service;
 using MultiShop.Shared.Settings;
+using MultiShop.WebUI.LocalizationServices;
+using MultiShop.WebUI.Resources;
+using System.Globalization;
 using System.Reflection;
 
 namespace MultiShop.WebUI.ServiceRegistirations
@@ -23,6 +28,8 @@ namespace MultiShop.WebUI.ServiceRegistirations
             //    opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
             //    opt.Cookie.Name = "MultiShopJwt";
             //});
+
+            
 
             Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, opts =>
             {
@@ -69,6 +76,58 @@ namespace MultiShop.WebUI.ServiceRegistirations
 
 
             var apiData = scope.GetRequiredService<IOptions<ApiSettings>>().Value;
+
+
+
+
+            //Localization işlemi
+
+            Services.AddLocalization(opt => { opt.ResourcesPath = "Resources"; });
+
+
+
+            Services.AddMvc().AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).
+               AddDataAnnotationsLocalization(opt =>
+               {
+
+                   opt.DataAnnotationLocalizerProvider = (type, factory) =>
+                   {
+                       var assembly = new AssemblyName(typeof(AppResource).GetTypeInfo().Assembly.FullName);
+                       return factory.Create("AppResource", assembly.Name);
+                   };
+               });
+
+
+            Services.Configure<RequestLocalizationOptions>(opt =>
+            {
+                var caltures = new List<CultureInfo> {
+                        new CultureInfo("tr-TR"),
+                        new CultureInfo("en-US"),
+                        new CultureInfo("fr-FR"),
+                        new CultureInfo("it-IT"),
+                        new CultureInfo("de-DE")
+                };
+
+                opt.DefaultRequestCulture = new RequestCulture(new CultureInfo("tr-TR"));
+                opt.SupportedCultures = caltures;
+                opt.SupportedUICultures = caltures;
+
+                opt.RequestCultureProviders = new List<IRequestCultureProvider>()
+                {
+                    new QueryStringRequestCultureProvider(),
+                    new CookieRequestCultureProvider(),
+                    new AcceptLanguageHeaderRequestCultureProvider()
+                };
+            });
+
+            Services.AddScoped<LocalizationService>();
+            //Localization işlemi end
+
+
+
+
+
+
 
 
             Services.AddScoped(typeof(IApiReadService<>), typeof(ApiReadService<>));
